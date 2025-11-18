@@ -1,5 +1,3 @@
-"use client";
-
 export default function AuthDivider() {
   return (
     <div className="flex w-full items-center gap-x-5">

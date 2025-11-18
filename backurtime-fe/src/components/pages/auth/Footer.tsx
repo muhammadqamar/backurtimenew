@@ -10,6 +10,7 @@ export default function AuthFooter() {
   const footer = useMemo(() => {
     const isSignUpPage = pathname.includes("sign-up");
     const isSignInPage = pathname.includes("sign-in");
+    const isForgotPasswordPage = pathname.includes("forgot-password");
 
     if (isSignUpPage) {
       return {
@@ -24,6 +25,14 @@ export default function AuthFooter() {
         title: "Don’t have an account?",
         label: "Sign up",
         to: "/auth/sign-up" as const,
+      };
+    }
+
+    if (isForgotPasswordPage) {
+      return {
+        title: "Remembered your password?",
+        label: "Sign in",
+        to: "/auth/sign-in" as const,
       };
     }
 

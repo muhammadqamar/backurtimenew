@@ -1,6 +1,6 @@
-import AuthHeading from "./Heading";
 import AuthFooter from "./Footer";
 import SocialMedias from "./SocialMedias";
 import AuthDivider from "./Divider";
+import Policies from "./Policies";
 
-export { AuthHeading, AuthFooter, SocialMedias, AuthDivider };
+export { AuthFooter, SocialMedias, AuthDivider, Policies };
