@@ -5,7 +5,7 @@ import Checkbox from "./Checkbox";
 import { Navbar } from "./Navbar";
 import LogoHeading from "./LogoHeading";
 import ProfileButton from "./ProfileButton";
-import Heading from "./Heading";
+
 import Toggle from "./Toggle";
 import { Tabs } from "./Tabs";
 import { Groups } from "./Groups";
@@ -18,7 +18,6 @@ export {
   Navbar,
   LogoHeading,
   ProfileButton,
-  Heading,
   Toggle,
   Tabs,
   Groups,

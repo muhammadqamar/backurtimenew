@@ -4,25 +4,25 @@ import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
 
 const cinzelFont = Cinzel({
-	variable: "--font-cinzel",
+  variable: "--font-cinzel",
 });
 
 const interFont = Inter({
-	variable: "--font-inter",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-	title: "Backurtime",
+  title: "Backurtime",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-	return (
-		<html lang="en">
-			<body
-				className={`${cinzelFont.variable} ${interFont.variable} antialiased`}
-			>
-				<ReactQueryProvider>{children}</ReactQueryProvider>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en" className="h-full">
+      <body
+        className={`${cinzelFont.variable} ${interFont.variable} h-full antialiased`}
+      >
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </body>
+    </html>
+  );
 }
