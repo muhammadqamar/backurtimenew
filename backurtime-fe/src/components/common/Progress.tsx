@@ -27,8 +27,8 @@ export default function Progress({
               y2="27.211"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" />
-              <stop offset="1" stop-color="white" stop-opacity="0.5" />
+              <stop stopColor="white" />
+              <stop offset="1" stopColor="white" stopOpacity="0.5" />
             </linearGradient>
           </defs>
         </>
@@ -37,7 +37,7 @@ export default function Progress({
           <path
             d="M6.48152 6.89879C6.98495 5.30483 8.46361 4.22119 10.1352 4.22119H12.5591C15.1489 4.22119 16.9927 6.73714 16.2128 9.20669L11.3722 24.5329C10.8688 26.1269 9.39014 27.2105 7.71857 27.2105H5.29465C2.70486 27.2105 0.861028 24.6946 1.64099 22.225L6.48152 6.89879Z"
             fill="white"
-            fill-opacity="0.07"
+            fillOpacity="0.07"
           />
           <path
             d="M6.48152 6.89879C6.98495 5.30483 8.46361 4.22119 10.1352 4.22119H12.5591C15.1489 4.22119 16.9927 6.73714 16.2128 9.20669L11.3722 24.5329C10.8688 26.1269 9.39014 27.2105 7.71857 27.2105H5.29465C2.70486 27.2105 0.861028 24.6946 1.64099 22.225L6.48152 6.89879Z"
@@ -52,8 +52,8 @@ export default function Progress({
               y2="27.2105"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#A0DBF0" />
-              <stop offset="1" stop-color="#00FFEA" />
+              <stop stopColor="#A0DBF0" />
+              <stop offset="1" stopColor="#00FFEA" />
             </linearGradient>
           </defs>
         </>

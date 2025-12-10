@@ -42,7 +42,7 @@ export default function DashboardLayout({
     <div className="bg-black-normal flex h-full w-full">
       <Navbar />
       <div
-        className="w-full bg-cover bg-center px-5 py-8 md:px-8 xl:px-[70px]"
+        className="w-full overflow-auto bg-cover bg-center px-5 py-8 md:px-8 xl:px-[70px]"
         style={{ backgroundImage: `url(${bg})` }}
       >
         <Header title={name} />
