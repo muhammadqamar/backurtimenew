@@ -1,9 +1,18 @@
 "use client";
-import PaperCard from "@/components/cards/paper_card";
-import { Button, Groups, Tabs } from "@/components/common";
-import { TabsDetails } from "@/components/pages/offers";
 import Image from "next/image";
 import { useState } from "react";
+import PaperCard from "@/components/cards/paper_card";
+import { Groups } from "@/components/common";
+import { TabsDetails } from "@/components/pages/offers";
+
+type ItemType = {
+  progress: number;
+  image: string;
+  title: string;
+  stats1: number;
+  stats2: number;
+  stats3: string;
+};
 
 const data = [
   {
@@ -136,7 +145,7 @@ export default function OffersPage() {
             className="right-[inherit]! bottom-[inherit]! w-auto! rounded-tl-[48px] xl:object-contain"
           />
         </div>
-        <div className="flex items-center justify-center gap-5">
+        <div className="mt-10 flex items-center justify-start gap-5 overflow-x-auto sm:justify-center xl:mt-0">
           <StoneButton label="My offers" />
           <StoneButton label="Simple offers" />
           <StoneButton label="Premium offers" />
@@ -163,7 +172,7 @@ export default function OffersPage() {
         </div>
       </div>
       <div className="flex w-full flex-col gap-8">
-        <TabsDetails data={data} />
+        <TabsDetails data={data as ItemType[]} />
       </div>
     </div>
   );
@@ -171,15 +180,24 @@ export default function OffersPage() {
 
 const StoneButton = ({ label = "label" }) => {
   return (
-    <button className="relative w-max px-6 py-4">
+    <button className="relative h-full min-h-16 w-max shrink-0 px-6 py-4">
       <span className="font-inter relative z-1 text-base leading-[150%]! font-medium text-white">
         {label}
       </span>
-      <div className="absolute top-1/2 left-1/2 h-[80%] w-[calc(100%-25px)] -translate-x-1/2 -translate-y-1/2 bg-[url(/components/stone-button/stone-btn-center-cropped.svg)] bg-cover bg-no-repeat" />
-      <div className="absolute top-0 left-1/2 z-1 h-4 w-[calc(100%-27px)] -translate-x-1/2 bg-[url(/components/stone-button/stone-btn-top.svg)] bg-cover bg-no-repeat" />
-      <div className="absolute bottom-0 left-1/2 z-1 h-4 w-[calc(100%-27px)] -translate-x-1/2 bg-[url(/components/stone-button/stone-btn-bottom.svg)] bg-cover bg-no-repeat" />
-      <div className="absolute top-0 left-0 z-1 h-full w-4 bg-[url(/components/stone-button/stone-btn-left.svg)] bg-contain bg-no-repeat" />
-      <div className="absolute top-0 right-0 z-1 h-full w-4 bg-[url(/components/stone-button/stone-btn-right.svg)] bg-contain bg-no-repeat" />
+      <Image
+        src="/components/stone-btn-right.svg"
+        alt="btn"
+        width={16}
+        height={64}
+        className="absolute top-0 right-0 h-full min-h-16 w-4 object-cover object-right"
+      />
+      <Image
+        src="/components/stone-btn-bg.svg"
+        alt="btn"
+        width={20}
+        height={64}
+        className="absolute top-0 left-0 h-full min-h-16 w-[calc(100%-16px)] object-cover object-left"
+      />
     </button>
   );
 };

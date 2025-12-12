@@ -1,6 +1,19 @@
 import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
-const OfferCard = ({ image, title, progress, stats1, stats2 }) => {
+const OfferCard = ({
+  image,
+  title,
+  progress,
+  stats1,
+  stats2,
+}: {
+  progress: number;
+  image: string;
+  title: string;
+  stats1: number;
+  stats2: number;
+  stats3: string;
+}) => {
   return (
     <div className="flex w-full flex-col gap-3 rounded-4xl bg-gray-600 p-2 text-white">
       <div className="relative aspect-video w-full">

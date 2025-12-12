@@ -35,7 +35,7 @@ export default function SubscriptionsSection() {
           onGroupChange={setCurrentGroup}
         />
       </div>
-      <div className="grid w-full grid-cols-3 items-center gap-x-5">
+      <div className="grid w-full grid-cols-1 items-center gap-x-5 sm:grid-cols-2 xl:grid-cols-3">
         {[1, 2, 3].map((i) => (
           <SubscriptionOwnerCard key={i} />
         ))}
@@ -62,6 +62,16 @@ const SubscriptionOwnerCard = () => {
             </div>
           </div>
         </div>
+        <div className="flex h-full min-h-[120] w-full flex-col items-center justify-center">
+          <div className="relative z-2 h-16 w-16">
+            <Image
+              src="/icons/youtub-white.svg"
+              fill
+              alt="layer"
+              className="object-contain"
+            />
+          </div>
+        </div>
 
         <div
           className={`absolute top-0 left-0 h-full w-full ${true ? "bg-[linear-gradient(326deg,rgba(179,230,239,0.00)_-0.95%,rgba(54,255,255,0.40)_94.75%)]" : "bg-[linear-gradient(326deg,rgba(179,230,239,0.00)_-0.95%,rgba(29,149,97,0.40)_94.75%)]"} `}
@@ -73,11 +83,50 @@ const SubscriptionOwnerCard = () => {
           className="object-cover opacity-5"
         />
       </div>
-      <div className="relative z-2 min-h-10 w-full px-4 pb-4">
+
+      <div className="relative z-2 flex min-h-10 w-full flex-col gap-4 px-4 pb-4">
         <p className="font-inter text-[18px] leading-[140%] font-semibold tracking-[1%] text-white">
           YouTube Premium
         </p>
-        <div className="flex w-full items-center justify-between gap-2.5"></div>
+        <div className="flex w-full items-center justify-between gap-2.5">
+          <div className="flex items-center">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className={`relative -ml-5 h-11 w-11 rounded-full bg-white first:ml-0`}
+              >
+                <Image
+                  src="/components/mock_user_avatar.png"
+                  alt="btn"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </div>
+          <p className="font-inter text-grey-light text-base leading-[150%]! font-medium">
+            1/3 members
+          </p>
+        </div>
+        <button className="relative flex min-h-12 w-full items-center justify-center p-[13px]">
+          <span className="font-cinzel text-lg leading-[122%]! font-bold text-white">
+            Access The Subscription
+          </span>
+          <Image
+            src="/components/frame-left-btn.svg"
+            alt="btn"
+            width={20}
+            height={48}
+            className="absolute top-0 right-0 h-full w-5 object-cover object-right"
+          />
+          <Image
+            src="/components/frame-btn.svg"
+            alt="btn"
+            width={20}
+            height={48}
+            className="absolute top-0 left-0 h-full min-h-12 w-[calc(100%-20px)] object-cover object-left"
+          />
+        </button>
       </div>
     </div>
   );

@@ -4,15 +4,17 @@ type BadgeProps = {
   color?: "gold" | "green" | "blue";
   type?: "image" | "icon" | "user";
   mediaUrl?: string;
+  className?: string;
 };
 export default function Badge({
   color = "gold",
   type = "image",
   mediaUrl,
+  className,
 }: BadgeProps) {
   return (
     <div
-      className={`relative flex aspect-square ${type === "user" ? "h-[62px] w-[62px]" : "h-[58px] w-[58px]"} items-center justify-center rounded-full`}
+      className={`${className} relative flex aspect-square h-[58px] w-[58px] items-center justify-center rounded-full`}
     >
       <div className="shadow-light absolute h-[85%] w-[85%] rounded-full" />
       <Image
@@ -23,8 +25,10 @@ export default function Badge({
         }
         alt={color + "image"}
         fill
+        className="object-contain"
       />
       <Image
+        id="user-avatar"
         src={mediaUrl || "/icons/badge/badge-placeholder.png"}
         alt="app logo"
         width={41}
@@ -39,7 +43,7 @@ export default function Badge({
       />
       {type === "user" && (
         <div
-          className="absolute right-0 bottom-0 size-5 rounded-full p-0.5"
+          className="absolute right-0 bottom-0 hidden size-5 rounded-full p-0.5 md:block"
           style={{
             background:
               " linear-gradient(90deg, #FFF8C1 -0.05%, #C2E8FD -0.04%, #909090 31.2%, #DDD 75.92%, #E3E3E3 100.02%)",

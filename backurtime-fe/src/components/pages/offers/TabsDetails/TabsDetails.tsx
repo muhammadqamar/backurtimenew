@@ -5,7 +5,18 @@ import { ReactNode, useMemo, useState } from "react";
 import OfferCard from "@/components/cards/offer_card";
 import Image from "next/image";
 
-export default function TabsDetails({ data }) {
+export default function TabsDetails({
+  data,
+}: {
+  data: Array<{
+    progress: number;
+    image: string;
+    title: string;
+    stats1: number;
+    stats2: number;
+    stats3: string;
+  }>;
+}) {
   const [currentTab, setCurrentTab] = useState("inprogress");
 
   const inProgress = data?.filter((i) => i.progress < 100);
@@ -30,7 +41,7 @@ export default function TabsDetails({ data }) {
     };
 
     return sections[currentTab];
-  }, [currentTab]);
+  }, [currentTab, inProgress, completed]);
 
   return (
     <div className="flex w-full flex-col gap-10">

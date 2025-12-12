@@ -42,3 +42,14 @@ export const NAVBAR_ROUTES = [
     to: "/dashboard/clan" as const,
   },
 ];
+
+export const ORDER = [
+  "community",
+  "store",
+  "offers",
+  "clan",
+  "rewards",
+  "missions",
+  "drawings",
+  "support",
+];

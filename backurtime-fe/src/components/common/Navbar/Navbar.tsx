@@ -2,11 +2,12 @@
 
 import { Help } from "@/components/icons";
 import Link from "next/link";
-import { NAVBAR_ROUTES } from "./routes";
+import { NAVBAR_ROUTES, ORDER } from "./routes";
 import { usePathname } from "next/navigation";
 import NavbarRoute from "./Route";
-import { useEffect, useMemo } from "react";
+import { Fragment, useMemo } from "react";
 import Image from "next/image";
+import { cn } from "@/utils";
 
 interface TypeProps {
   setIsMobileSidebar: (value: boolean) => void;
@@ -23,34 +24,68 @@ export default function Navbar({
     return pathname.split("/").filter(Boolean)[1] || "offers";
   }, [pathname]);
 
+  const NAVBAR_ROUTES_SORTED = [...NAVBAR_ROUTES].sort(
+    (a, b) => ORDER.indexOf(a.name) - ORDER.indexOf(b.name),
+  );
+
   return (
-    <div className="sidebar bg-dark-normal group border-r-primitives-white_30 top-0 left-0 z-9999 flex min-h-dvh w-28 flex-col justify-between overflow-hidden rounded-r-[40px] border-r-[.5px] px-6 py-8 transition-all duration-300 ease-in-out hover:w-[280px]">
-      <div className="flex w-full flex-col gap-y-[142px]">
-        <div className="flex items-center justify-center transition-all duration-300 group-hover:justify-start group-hover:gap-x-5">
-          <Image src="/logo.png" alt="app logo" width={40} height={40} />
-          <span className="font-inter hidden text-[22px] font-semibold text-white transition-opacity duration-300 group-hover:block">
-            Backurtime
+    <Fragment>
+      <div
+        className={cn(
+          "sidebar bg-dark-normal group border-r-primitives-white_30 top-0 left-0 z-9999 hidden min-h-dvh w-[280px] flex-col justify-between overflow-hidden rounded-r-[40px] border-r-[.5px] px-6 py-8 transition-all duration-300 ease-in-out hover:w-[280px] sm:flex xl:w-28",
+          "transition-all duration-300 ease-in-out",
+          "fixed top-0 left-0 xl:relative",
+          isMobileSidebar
+            ? "translate-x-0 opacity-100"
+            : "-translate-x-[280px] opacity-100 xl:translate-x-0 xl:opacity-100",
+        )}
+      >
+        <div className="flex w-full flex-col gap-y-[142px]">
+          <div className="relative flex items-center justify-start gap-x-5 transition-all duration-300 group-hover:justify-start group-hover:gap-x-5 xl:justify-center xl:gap-x-0">
+            <Image src="/logo.png" alt="app logo" width={40} height={40} />
+            <span className="font-inter block text-[22px] font-semibold text-white transition-opacity duration-300 group-hover:block xl:hidden">
+              Backurtime
+            </span>
+
+            <Image
+              src="/icons/cross.svg"
+              alt="app logo"
+              width={24}
+              height={24}
+              className="absolute top-1/2 right-0 -translate-y-1/2 cursor-pointer opacity-100 xl:opacity-0"
+              onClick={() => {
+                setIsMobileSidebar(false);
+              }}
+            />
+          </div>
+
+          <div className="flex w-full flex-col gap-y-[14px]">
+            {NAVBAR_ROUTES.map((r) => {
+              const isActive = currentRoute === r.name;
+
+              return <NavbarRoute key={r.id} isActive={isActive} route={r} />;
+            })}
+          </div>
+        </div>
+
+        <Link
+          href="/dashboard"
+          className="flex items-center justify-start gap-x-6 transition-all duration-300 group-hover:justify-start group-hover:gap-x-6 xl:justify-center xl:gap-x-0"
+        >
+          <Help />
+          <span className="font-inter text-grey-light block text-base font-medium transition-opacity duration-300 group-hover:block xl:hidden">
+            Help & Support
           </span>
-        </div>
-
-        <div className="flex w-full flex-col gap-y-[14px]">
-          {NAVBAR_ROUTES.map((r) => {
-            const isActive = currentRoute === r.name;
-
-            return <NavbarRoute key={r.id} isActive={isActive} route={r} />;
-          })}
-        </div>
+        </Link>
       </div>
 
-      <Link
-        href="/dashboard"
-        className="flex items-center justify-center transition-all duration-300 group-hover:justify-start group-hover:gap-x-6"
-      >
-        <Help />
-        <span className="font-inter text-grey-light hidden text-base font-medium transition-opacity duration-300 group-hover:block">
-          Help & Support
-        </span>
-      </Link>
-    </div>
+      <div className="bg-dark-normal border-primitives-white_30 fixed bottom-0 left-0 z-50 grid h-16 w-full grid-cols-5 rounded-tl-[20px] rounded-tr-[20px] border-t p-1 sm:hidden">
+        {NAVBAR_ROUTES_SORTED.slice(0, 4).map((r) => {
+          const isActive = currentRoute === r.name;
+
+          return <NavbarRoute key={r.id} isActive={isActive} route={r} />;
+        })}
+      </div>
+    </Fragment>
   );
 }

@@ -1,9 +1,15 @@
 import type { SVGProps } from "react";
-const SvgOffers = (props: SVGProps<SVGSVGElement>) => (
+
+type IconProps = SVGProps<SVGSVGElement> & {
+  size?: number;
+};
+
+const SvgOffers = ({ size = 24, ...props }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
     fill="none"
     {...props}
   >
