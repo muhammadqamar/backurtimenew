@@ -12,6 +12,7 @@
   --color-dark: #181d28;
   --color-dark-normal: #08151d;
   --color-white-10: rgba(255, 255, 255, 0.05);
+  --color-primitives-white_10: rgba(255, 255, 255, 0.1);
   --color-primitives-white_20: rgba(255, 255, 255, 0.2);
   --color-primitives-white_30: rgba(255, 255, 255, 0.3);
   --color-primitives-grey_900: #262f38;
