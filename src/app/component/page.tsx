@@ -20,6 +20,7 @@ import OnboardingCard from "@/components/cards/onboarding_card";
 import BonusCard from "@/components/cards/bonus_card";
 import RankCard from "@/components/cards/RankCard";
 import WoodenCard from "@/components/cards/WoodenCard";
+import PrizeCard from "@/components/cards/PrizeCard";
 
 export default function Page() {
   const iconComponents = [
@@ -358,6 +359,27 @@ export default function Page() {
           <span>mobile</span>
           <WoodenCard label="Total members" TotalMembers={20} small />
         </div>
+      </div>
+      <span className="font-bold">Prize Card</span>
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <PrizeCard
+          imageUrl="/components/prize-card.png"
+          campaignName="Cyber monday"
+          productName="iPhone 16 Pro"
+          rarity="Ultra Rare"
+        />
+        <PrizeCard
+          imageUrl="/components/prize-card.png"
+          campaignName="Cyber monday"
+          productName="iPhone 16 Pro"
+          rarity="Rare"
+        />
+        <PrizeCard
+          imageUrl="/components/prize-card.png"
+          campaignName="Cyber monday"
+          productName="iPhone 16 Pro"
+          rarity="Common"
+        />
       </div>
     </div>
   );
