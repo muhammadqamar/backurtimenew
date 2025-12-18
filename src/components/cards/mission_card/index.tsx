@@ -24,9 +24,9 @@ const MissionCard = ({
     <div
       className={cn(
         "bg-primitives-white_10 border-primitives-white_20 relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-4xl border",
-        "before:absolute before:top-1/2 before:left-1/2 before:z-2 before:h-full before:w-full before:-translate-x-1/2 before:-translate-y-1/2 before:bg-[url(/components/mission-card-backdrop-shadow.svg)] before:bg-cover before:bg-center before:bg-no-repeat",
       )}
     >
+      <div className="absolute top-1/2 left-1/2 h-[137px] w-[276px] -translate-1/2 rounded-[276px] bg-[linear-gradient(90deg,#C2E8FD_-0.05%,#67E0AC_31.2%,#138B57_75.92%,#C2E8FD_100.02%)] opacity-[.4] filter-[blur(68.05000305175781px)]" />
       <div className="relative z-1 w-full px-6 pt-6 pb-4 md:px-[34px] md:pt-[34px] md:pb-6">
         <h5 className="font-inter mb-3 text-base leading-[135%]! font-medium sm:text-xl">
           {title}

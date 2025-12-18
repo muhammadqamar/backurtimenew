@@ -247,6 +247,12 @@
   display: none;
 }
 
+.tooltip-bg {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 19.23%, rgba(0, 0, 0, 0) 50%),
+    #ffffff;
+}
+
 @import "./fonts.css";
 @import "./colors.css";
 @import "./breakpoint.css";

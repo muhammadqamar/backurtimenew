@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
-import { Status } from "@/components/common";
+import { Button, Status } from "@/components/common";
 import { cn } from "@/utils";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Apple, Clock, Document } from "@/components/icons";
+import { Apple, Clock, Document, Info } from "@/components/icons";
 
 const OfferCard = ({
   image,
@@ -42,10 +42,11 @@ const OfferCard = ({
   ];
 
   return (
-    <div className="flex w-full flex-col gap-3 rounded-4xl bg-gray-600 p-2 text-white">
+    <div className="bg-primitives-white_20 relative flex w-full flex-col gap-3 overflow-hidden rounded-4xl p-2 text-white">
+      <div className="bg-sea-green absolute top-[125px] left-1/2 h-[137px] w-[276px] -translate-x-1/2 filter-[blur(68.05000305175781px)]" />
       <div
         className={cn(
-          "relative aspect-video w-full overflow-hidden rounded-4xl bg-cover! bg-no-repeat! p-[18px]",
+          "relative z-1 aspect-video w-full overflow-hidden rounded-4xl bg-cover! bg-no-repeat! p-[18px]",
         )}
         style={{
           background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(${image}) lightgray`,
@@ -75,7 +76,7 @@ const OfferCard = ({
           ))}
         </div>
       </div>
-      <div className="px-4 pt-2 pb-3">
+      <div className="relative z-1 w-full px-4 pt-2 pb-3">
         <h2 className="font-cinzel motion-safe mb-2 text-[20px] leading-[120%] font-bold tracking-[.2px] uppercase">
           {title}
         </h2>
@@ -99,6 +100,7 @@ const OfferCard = ({
                 width={40}
                 height={40}
                 alt="Picture of the author"
+                className="drop-shadow-icon-sm"
               />
               <span className="font-cinzel text-base leading-[120%]! font-bold text-white">
                 {stats1}
@@ -110,6 +112,7 @@ const OfferCard = ({
                 width={40}
                 height={40}
                 alt="Picture of the author"
+                className="drop-shadow-icon-sm"
               />
               <span className="font-cinzel text-base leading-[120%]! font-bold text-white">
                 {stats2}
@@ -124,6 +127,17 @@ const OfferCard = ({
               className="ml-auto"
             />
           )}
+
+          <span className="font-inter ml-auto text-base leading-[140%]! font-normal tracking-[.16px] text-white">
+            *Deposit
+          </span>
+        </div>
+        <div className="mt-[18px] flex w-full items-center gap-2">
+          <Button title="Earn Now" variant="secondary" />
+          <Button
+            icon={<Info className="[&>path]:stroke-primitives-blue" />}
+            className="border-primitives-white_10 bg-primitives-white_10 flex h-12 w-12 items-center justify-center rounded-full border p-3"
+          />
         </div>
       </div>
     </div>

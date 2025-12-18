@@ -1,6 +1,6 @@
+import React from "react";
 import { cn } from "@/utils";
 import Image from "next/image";
-import React from "react";
 
 interface TypeProps {
   icon?: boolean;
@@ -9,6 +9,7 @@ interface TypeProps {
   status?: "completed" | "in-completed";
   type?: "silver" | "gold" | "green" | "blue";
   className?: string;
+  small?: boolean;
 }
 
 const Status = ({
@@ -18,6 +19,7 @@ const Status = ({
   rounded,
   status,
   className,
+  small,
 }: TypeProps) => {
   function getColorType(type?: string) {
     switch (type) {
@@ -52,8 +54,8 @@ const Status = ({
           "bg-gray-10 flex items-center gap-1.5 border border-transparent",
           rounded ? "rounded-full" : "rounded-[11px]",
           status === "completed"
-            ? "px-[7px] py-1 sm:px-[11px] sm:py-[5px]"
-            : "px-[11px] py-[3px] sm:px-[15px] sm:py-[7px]",
+            ? `${small ? "px-[7px] py-1" : "px-[7px] py-1 sm:px-[11px] sm:py-[5px]"}`
+            : `${small ? "px-[11px] py-[3px]" : "px-[11px] py-[3px] sm:px-[15px] sm:py-[7px]"}`,
         )}
       >
         {(icon || status === "completed") && (
@@ -62,15 +64,18 @@ const Status = ({
             alt="tick"
             width={18}
             height={18}
-            className="h-3.5 w-3.5 shrink object-contain sm:h-[18px] sm:w-[18px]"
+            className={cn(
+              "shrink object-contain",
+              small ? "size-3.5!" : "size-3.5! sm:size-[18px]!",
+            )}
           />
         )}
         <span
           className={cn(
             "font-inter text-white",
             status === "completed"
-              ? "text-[10px] leading-[120%]! font-semibold tracking-[1%] sm:text-[12px]"
-              : "text-[12px] leading-[140%]! font-normal sm:text-base",
+              ? `leading-[120%]! font-semibold tracking-[1%] ${small ? "text-[10px]" : "text-[10px] sm:text-[12px]"}`
+              : `leading-[140%]! font-normal ${small ? "text-[12px]" : "text-[12px] sm:text-base"}`,
           )}
         >
           {text}

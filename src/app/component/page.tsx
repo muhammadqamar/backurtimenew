@@ -18,6 +18,8 @@ import { FaqItem } from "@/components/common";
 import MissionCard from "@/components/cards/mission_card";
 import OnboardingCard from "@/components/cards/onboarding_card";
 import BonusCard from "@/components/cards/bonus_card";
+import RankCard from "@/components/cards/RankCard";
+import WoodenCard from "@/components/cards/WoodenCard";
 
 export default function Page() {
   const iconComponents = [
@@ -173,6 +175,37 @@ export default function Page() {
             type="silver"
           />
         </div>
+        <div className="grid grid-cols-1 gap-3.5">
+          <Status small text="Completed" status={"completed"} />
+          <Status
+            small
+            text="Completed"
+            status={"in-completed"}
+            rounded
+            type="gold"
+          />
+          <Status
+            small
+            text="Completed"
+            status={"in-completed"}
+            rounded
+            type="green"
+          />
+          <Status
+            small
+            text="Completed"
+            status={"in-completed"}
+            rounded
+            type="blue"
+          />
+          <Status
+            small
+            text="Completed"
+            status={"in-completed"}
+            rounded
+            type="silver"
+          />
+        </div>
       </div>
       <div className="grid w-full grid-cols-1 gap-4">
         <span>ToolTips</span>
@@ -302,6 +335,28 @@ export default function Page() {
         <span className="font-bold">Bonus Card</span>
         <div className="w-full">
           <BonusCard title="Text" icon="/icons/bonus-card.svg" />
+        </div>
+      </div>
+      <div className="grid w-full grid-cols-1 gap-4">
+        <span className="font-bold">Rank Card</span>
+        <div className="w-full">
+          <RankCard
+            clanname="Clanname"
+            username="Username"
+            level={10}
+            rank="sliver"
+            points={150}
+            className="w-[273px]"
+          />
+        </div>
+      </div>
+      <div className="grid w-full grid-cols-1 gap-4">
+        <span className="font-bold">Wooden Card</span>
+        <div className="flex w-full flex-col gap-3.5">
+          <WoodenCard label="Total members" TotalMembers={20} />
+
+          <span>mobile</span>
+          <WoodenCard label="Total members" TotalMembers={20} small />
         </div>
       </div>
     </div>

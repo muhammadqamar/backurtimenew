@@ -1,16 +1,18 @@
 import Image from "next/image";
 
 type BadgeProps = {
-  color?: "gold" | "green" | "blue";
+  color?: "gold" | "green" | "blue" | "sliver" | "gold-crown" | "cuper";
   type?: "image" | "icon" | "user";
   mediaUrl?: string;
   className?: string;
+  level?: number | string;
 };
 export default function Badge({
   color = "gold",
   type = "image",
   mediaUrl,
   className,
+  level,
 }: BadgeProps) {
   return (
     <div
@@ -46,7 +48,7 @@ export default function Badge({
           className="absolute right-0 bottom-0 hidden size-5 rounded-full p-0.5 md:block"
           style={{
             background:
-              " linear-gradient(90deg, #FFF8C1 -0.05%, #C2E8FD -0.04%, #909090 31.2%, #DDD 75.92%, #E3E3E3 100.02%)",
+              "linear-gradient(90deg, #FFF8C1 -0.05%, #C2E8FD -0.04%, #909090 31.2%, #DDD 75.92%, #E3E3E3 100.02%)",
           }}
         >
           <div
@@ -57,7 +59,7 @@ export default function Badge({
             }}
           >
             <span className="font-inter text-center text-[8px] leading-2 font-medium tracking-[.08px] text-white">
-              10
+              {level || 0}
             </span>
           </div>
         </div>
