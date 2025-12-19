@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, FilterChips, Status } from "@/components/common";
 import Radio from "@/components/common/Radio";
 import {
@@ -22,7 +24,9 @@ import RankCard from "@/components/cards/RankCard";
 import WoodenCard from "@/components/cards/WoodenCard";
 import LiveDonateCard from "@/components/cards/LiveDonateCard";
 import PrizeCard from "@/components/cards/PrizeCard";
-import { SubscriptionCard } from "@/components/cards/SubscriptionSettingCard";
+import SubscriptionSettingCard from "@/components/cards/SubscriptionSettingCard";
+import SubscriptionCard from "@/components/cards/SubscriptionCard";
+import PaymentMethodCard from "@/components/cards/PaymentMethodCard";
 
 export default function Page() {
   const iconComponents = [
@@ -404,15 +408,48 @@ export default function Page() {
         </div>
         <span className="font-bold">Subscription Setting Card</span>
         <div className="grid w-full grid-cols-1 gap-4">
-          <SubscriptionCard
+          <SubscriptionSettingCard
             name="Netflix"
             logoUrl="/components/subcription-setting-icon.svg"
             isOwner={true}
           />
-          <SubscriptionCard
+          <SubscriptionSettingCard
             name="Netflix"
             logoUrl="/components/subcription-setting-icon.svg"
             isOwner={false}
+          />
+        </div>
+        <span className="font-bold">Subscription Card</span>
+        <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <SubscriptionCard
+            isButton={false}
+            name="Netflix Premium"
+            price={22.27}
+          />
+          <SubscriptionCard
+            isButton={true}
+            name="Netflix Premium"
+            price={22.27}
+            onClick={() => {
+              alert("button is clicking");
+            }}
+          />
+        </div>
+        <span className="font-bold">Payment method Card</span>
+        <div className="grid w-full grid-cols-1 gap-3">
+          <PaymentMethodCard
+            bankName="Axim Bank"
+            cardLast4="4578"
+            expiry="08/25"
+            isPrimary
+            iconSrc={"/components/bank-card-icon.svg"}
+          />
+
+          <PaymentMethodCard
+            bankName="Axim Bank"
+            cardLast4="4578"
+            expiry="08/25"
+            iconSrc={"/components/bank-card-icon.svg"}
           />
         </div>
       </div>
