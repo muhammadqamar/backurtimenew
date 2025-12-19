@@ -12,7 +12,7 @@ type SubscriptionCardProps = {
   logoUrl: string;
   isOwner?: boolean;
 };
-export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
+const SubscriptionSettingCard: React.FC<SubscriptionCardProps> = ({
   name,
   logoUrl,
   isOwner,
@@ -64,3 +64,5 @@ export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     </div>
   );
 };
+
+export default SubscriptionSettingCard;
