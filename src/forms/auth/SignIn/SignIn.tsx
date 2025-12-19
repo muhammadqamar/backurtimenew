@@ -50,9 +50,9 @@ export default function SignInForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex w-full flex-col gap-y-8"
+      className="relative z-1 flex w-full flex-col gap-4 sm:gap-y-8"
     >
-      <div className="flex w-full flex-col gap-y-6">
+      <div className="flex w-full flex-col gap-4 sm:grid-cols-2 sm:gap-6">
         <Input
           withLabel
           labelTitle="Username or Email"
@@ -72,11 +72,11 @@ export default function SignInForm() {
           errorTitle={errors.password?.message}
           {...register("password")}
         />
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full flex-wrap items-center justify-between gap-2">
           <Checkbox withLabel labelTitle="Remember me" id="remember-me" />
           <Link
             href="/auth/forgot-password"
-            className="text-green-normal font-inter text-base font-medium"
+            className="text-green-normal font-inter ml-auto text-sm leading-[150%] font-medium sm:text-base"
           >
             Forgot password?
           </Link>

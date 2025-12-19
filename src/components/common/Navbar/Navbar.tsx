@@ -32,7 +32,7 @@ export default function Navbar({
     <Fragment>
       <div
         className={cn(
-          "sidebar bg-dark-normal group border-r-primitives-white_30 top-0 left-0 z-9999 hidden min-h-dvh w-[280px] flex-col justify-between overflow-hidden rounded-r-[40px] border-r-[.5px] px-6 py-8 transition-all duration-300 ease-in-out hover:w-[280px] sm:flex xl:w-28",
+          "sidebar bg-dark-normal group border-r-primitives-white_30 top-0 left-0 z-9999 hidden min-h-dvh w-[280px] flex-col justify-between overflow-x-hidden overflow-y-auto rounded-r-[40px] border-r-[.5px] px-6 py-8 transition-all duration-300 ease-in-out hover:w-[280px] sm:flex xl:w-28",
           "transition-all duration-300 ease-in-out",
           "fixed top-0 left-0 xl:sticky",
           isMobileSidebar
@@ -40,7 +40,7 @@ export default function Navbar({
             : "-translate-x-[280px] opacity-100 xl:translate-x-0 xl:opacity-100",
         )}
       >
-        <div className="flex h-full w-full flex-col justify-between gap-y-8">
+        <div className="flex h-full min-h-[calc(100dvh-64px)] w-full flex-col justify-between gap-y-8 overflow-y-auto">
           <div className="relative flex items-center justify-center gap-x-5 transition-all duration-300 ease-in-out group-hover:gap-x-5 xl:gap-x-0">
             <Image
               src="/logo.png"
@@ -52,7 +52,7 @@ export default function Navbar({
             <span
               className={cn(
                 "font-inter text-[22px] font-semibold text-white transition-all duration-300 ease-in-out",
-                "w-0 -translate-x-6 overflow-hidden opacity-0",
+                "w-full translate-x-0 overflow-hidden opacity-100 xl:w-0 xl:-translate-x-6 xl:opacity-0",
                 "group-hover:w-full group-hover:translate-x-0 group-hover:opacity-100",
               )}
             >
@@ -71,7 +71,7 @@ export default function Navbar({
             />
           </div>
 
-          <div className="flex w-full flex-col gap-y-[14px]">
+          <div className="flex w-full flex-col gap-y-3.5">
             {NAVBAR_ROUTES.map((r) => {
               const isActive = currentRoute === r.name;
 
@@ -80,7 +80,7 @@ export default function Navbar({
           </div>
           <Link
             href="/dashboard"
-            className="flex items-center justify-start gap-x-6 transition-all duration-300 group-hover:justify-start group-hover:gap-x-6 xl:justify-center xl:gap-x-0"
+            className="flex items-center justify-start gap-x-6 px-5 py-4 transition-all duration-300 group-hover:justify-start group-hover:gap-x-6 xl:justify-center xl:gap-x-0"
           >
             <div className="shrink-0">
               <Help />
@@ -88,7 +88,7 @@ export default function Navbar({
             <span
               className={cn(
                 "font-inter text-grey-light text-base font-medium whitespace-nowrap transition-all duration-300 ease-in-out",
-                "w-0 -translate-x-2 overflow-hidden opacity-0",
+                "w-full translate-x-0 overflow-hidden opacity-100 xl:w-0 xl:-translate-x-2 xl:opacity-0",
                 "group-hover:w-full group-hover:translate-x-0 group-hover:opacity-100",
               )}
             >
@@ -97,7 +97,7 @@ export default function Navbar({
           </Link>
         </div>
       </div>
-
+      {/* mobile */}
       <div className="bg-dark-normal border-primitives-white_30 fixed bottom-0 left-0 z-50 grid h-16 w-full grid-cols-5 rounded-tl-[20px] rounded-tr-[20px] border-t p-1 sm:hidden">
         {NAVBAR_ROUTES_SORTED.slice(0, 4).map((r) => {
           const isActive = currentRoute === r.name;

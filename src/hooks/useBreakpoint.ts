@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 
 const BREAKPOINTS = {
+  xsm: 440,
   sm: 640,
   md: 768,
   lg: 1024,

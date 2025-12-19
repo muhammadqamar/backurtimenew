@@ -118,8 +118,9 @@ export default function Header({ title, setIsMobileSidebar }: HeadingProps) {
 
         <div className="m-0 flex items-center gap-3 xl:ml-4">
           <Badge
-            color="green"
+            color="silver"
             type="user"
+            level={20}
             className="h-10! w-10! sm:h-[62px]! sm:w-[62px]! *:[[id='user-avatar']]:h-[26px]! *:[[id='user-avatar']]:w-[26px]!"
             mediaUrl="/icons/badge/user-placeholder.svg"
           />

@@ -27,14 +27,14 @@ export default function TabsDetails({
       inprogress: (
         <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] 2xl:grid-cols-4">
           {inProgress.map((d, i) => (
-            <OfferCard key={i} {...d} />
+            <OfferCard variant="my-offer" key={i} {...d} />
           ))}
         </div>
       ),
       completed: (
         <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] 2xl:grid-cols-4">
           {completed.map((d, i) => (
-            <OfferCard key={i} {...d} />
+            <OfferCard variant="my-offer" key={i} {...d} />
           ))}
         </div>
       ),

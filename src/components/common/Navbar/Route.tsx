@@ -96,7 +96,7 @@ export default function NavbarRoute({ route, isActive }: NavbarRouteProps) {
         </div>
         <span
           className={cn(
-            "font-inter text-grey-light w-0 translate-x-0 overflow-hidden text-base font-medium whitespace-nowrap opacity-100 transition-all duration-300 ease-in-out xl:translate-x-[-8px] xl:opacity-0",
+            "font-inter text-grey-light w-full translate-x-0 overflow-hidden text-base font-medium whitespace-nowrap opacity-100 transition-all duration-300 ease-in-out xl:w-0 xl:translate-x-2 xl:opacity-0",
             "group-hover:w-full group-hover:translate-x-0 group-hover:opacity-100",
             isActive && "text-white",
           )}

@@ -11,7 +11,7 @@ const Banner = () => {
       )}
       style={{
         backgroundImage: "url(/components/banner.png)",
-        backgroundPosition: "top",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

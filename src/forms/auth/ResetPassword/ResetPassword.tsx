@@ -34,9 +34,9 @@ export default function ResetPasswordForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex w-full flex-col gap-y-8"
+      className="relative z-1 mx-auto flex w-full flex-col gap-y-4 sm:w-[400px] sm:gap-y-8"
     >
-      <div className="flex w-full flex-col gap-y-6">
+      <div className="flex w-full flex-col gap-4 sm:gap-6">
         <Input
           type="password"
           withLabel

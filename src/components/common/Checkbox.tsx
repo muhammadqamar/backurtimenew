@@ -16,7 +16,7 @@ export default function Checkbox({
   ...props
 }: CheckboxProps) {
   return (
-    <div className={cn("flex items-center", withLabel && "gap-x-[10px]")}>
+    <div className={cn("flex items-center", withLabel && "gap-x-2.5")}>
       <input
         type="checkbox"
         id={id}
@@ -31,7 +31,7 @@ export default function Checkbox({
       {withLabel && (
         <label
           htmlFor={id}
-          className="font-inter text-grey-light cursor-pointer text-base font-normal"
+          className="font-inter text-grey-light cursor-pointer text-sm leading-[140%] font-normal sm:text-base sm:leading-[150%]"
         >
           {labelTitle}
         </label>

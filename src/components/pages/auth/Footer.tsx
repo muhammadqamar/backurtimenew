@@ -41,13 +41,13 @@ export default function AuthFooter() {
 
   return (
     <div className="flex items-center gap-x-1">
-      <span className="font-inter text-grey-light text-[18px] font-normal">
+      <span className="font-inter text-grey-light text-base leading-[140%] font-normal sm:text-[18px]">
         {footer.title}
       </span>
       <Link
         href={footer.to}
         replace
-        className="font-inter text-green-normal text-[18px] font-normal"
+        className="font-inter text-green-normal text-[18px] leading-[140%] font-normal"
       >
         {footer.label}
       </Link>

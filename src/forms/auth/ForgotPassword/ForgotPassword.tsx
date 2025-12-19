@@ -34,7 +34,7 @@ export default function ForgotPasswordForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex w-full flex-col gap-y-8"
+      className="relative z-1 flex w-full flex-col gap-y-4 sm:gap-y-8"
     >
       <Input
         withLabel

@@ -10,7 +10,7 @@ const SOCIAL_MEDIAS = [
 
 export default function SocialMedias() {
   return (
-    <div className="flex w-full items-center justify-center gap-x-5">
+    <div className="relative z-1 flex w-full items-center justify-center gap-x-4 sm:gap-x-[21px]">
       {SOCIAL_MEDIAS.map((sm) => (
         <Image
           key={sm.id}
@@ -18,7 +18,7 @@ export default function SocialMedias() {
           alt={sm.alt}
           width={64}
           height={64}
-          className="cursor-pointer"
+          className="size-12 cursor-pointer sm:size-16"
           onClick={() => alert("In development")}
         />
       ))}
