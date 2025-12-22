@@ -65,7 +65,7 @@ export default function ResetPasswordForm() {
         backgroundImageUrl="/components/button_bg_227_54.svg"
         withTextDecoration
         disabled={disabled}
-        className="font-cinzel h-[54px] w-[227px] self-center text-[18px] font-bold text-white"
+        className="font-cinzel h-[54px] max-w-[279px] self-center text-[18px] font-bold text-white max-sm:bg-[url(/components/mobile-auth-button.svg)]! sm:max-w-[227px]"
       />
     </form>
   );

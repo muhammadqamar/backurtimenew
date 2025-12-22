@@ -12,6 +12,7 @@ import { Tabs } from "./Tabs";
 import { Groups } from "./Groups";
 import FilterChips from "./FilterChips";
 import Status from "./Status";
+import GlassPanel from "./GlassPanel";
 
 export {
   Status,
@@ -28,4 +29,5 @@ export {
   FilterChips,
   Radio,
   FaqItem,
+  GlassPanel,
 };

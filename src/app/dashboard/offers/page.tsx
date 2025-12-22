@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import PaperCard from "@/components/cards/paper_card";
-import { Groups } from "@/components/common";
+import { GlassPanel, Groups } from "@/components/common";
 import { Banner, TabsDetails } from "@/components/pages/offers";
 import { StoneTag } from "@/components/common/Tags";
 import { PresentBox } from "@/components/icons";
@@ -102,7 +102,7 @@ export default function OffersPage() {
     <div className="flex w-full flex-col gap-8 py-4 sm:gap-12 sm:py-8">
       <div className="flex w-full flex-col gap-8">
         <Banner />
-        <div className="no-scrollbar flex items-center justify-start gap-3.5 overflow-x-auto sm:justify-center sm:gap-5">
+        <div className="no-scrollbar flex items-center justify-start gap-3.5 overflow-x-auto sm:gap-5 [@media(min-width:530px)]:justify-center">
           <StoneTag active label="My offers" />
           <StoneTag label="Simple offers" />
           <StoneTag label="Premium offers" />
@@ -111,7 +111,7 @@ export default function OffersPage() {
       </div>
       <div className="flex w-full flex-col gap-6 sm:gap-8">
         <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row sm:gap-6">
-          <h1 className="text-shadow-dark-small font-cinzel w-3/4 text-left text-2xl leading-[122%]! font-bold text-white sm:text-[32px]">
+          <h1 className="text-shadow-dark-small font-cinzel w-full text-left text-2xl leading-[122%]! font-bold text-white sm:text-[32px]">
             Hello, username!
           </h1>
           <div className="w-full sm:w-max">
