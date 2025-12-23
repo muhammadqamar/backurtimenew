@@ -29,7 +29,7 @@
   --color-primitives-grey_200: #ababab;
 
   /* shadow */
-
+  --drop-shadow-star-badge: 0px 3px 6px rgba(255, 255, 255, 0.25);
   --shadow-light: 0 7px 14px 0 rgba(255, 255, 255, 0.24);
   --text-shadow-green: 1px 6px 10.2px rgba(0, 255, 234, 0.6);
   --text-shadow-dark-small: 0 4px 0 rgba(0, 0, 0, 0.5);

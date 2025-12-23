@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, FilterChips, Status } from "@/components/common";
+import { Button, FilterChips, StarBadge, Status } from "@/components/common";
 import Radio from "@/components/common/Radio";
 import {
   CardTag,
@@ -27,6 +27,7 @@ import PrizeCard from "@/components/cards/PrizeCard";
 import SubscriptionSettingCard from "@/components/cards/SubscriptionSettingCard";
 import SubscriptionCard from "@/components/cards/SubscriptionCard";
 import PaymentMethodCard from "@/components/cards/PaymentMethodCard";
+import { DataTable, TableData } from "@/components/common/Tables";
 
 export default function Page() {
   const iconComponents = [
@@ -103,6 +104,94 @@ export default function Page() {
     "Rewards",
     "UnArchive",
   ];
+
+  const paymentHistoryTable: TableData = {
+    id: "payment-history",
+    type: "payment-history",
+    title: "Payment History",
+    columns: [
+      { header: "Name", accessorKey: "name" },
+      { header: "Email", accessorKey: "email" },
+      { header: "Method", accessorKey: "method" },
+      { header: "Amount", accessorKey: "amount" },
+      { header: "Date", accessorKey: "date" },
+      { header: "Actions", accessorKey: "actions" },
+    ],
+    rows: [
+      {
+        id: "payment-1",
+        type: "payment-history",
+        onClick: () => alert("Clicked entire row!"),
+        cells: {
+          name: {
+            value: "John Doe",
+            icon: "",
+            onClick: () => alert("Clicked name cell"),
+            iconOnClick: () => alert("Clicked user icon"),
+          },
+          email: {
+            value: "john@example.com",
+            icon: "",
+            href: "mailto:john@example.com",
+            onClick: () => alert("This won't fire because href exists"),
+          },
+          method: {
+            value: "Credit Card",
+            icon: "",
+            onClick: () => alert("Clicked payment method"),
+          },
+          amount: {
+            value: "€ 7.42",
+            icon: "",
+            onClick: () => alert("Clicked amount"),
+          },
+          date: {
+            value: "12 April, 2025",
+            icon: "",
+            onClick: () => alert("Clicked date"),
+          },
+          actions: {
+            value: "", // This can be empty or used as fallback
+            render: () => (
+              // Move render here as a property
+              <div className="flex gap-2">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    alert("View details");
+                  }}
+                  className="rounded p-2 text-blue-600 hover:bg-blue-100"
+                  title="View"
+                >
+                  View
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    alert("Edit");
+                  }}
+                  className="rounded p-2 text-green-600 hover:bg-green-100"
+                  title="Edit"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    alert("Delete");
+                  }}
+                  className="rounded p-2 text-red-600 hover:bg-red-100"
+                  title="Delete"
+                >
+                  Delete
+                </button>
+              </div>
+            ),
+          },
+        },
+      },
+    ],
+  };
 
   return (
     <div className="bg-dark mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-8 text-white">
@@ -361,7 +450,10 @@ export default function Page() {
         <span className="font-bold">Wooden Card</span>
         <div className="flex w-full flex-col gap-3.5">
           <WoodenCard label="Total members" TotalMembers={20} />
-
+          <StarBadge
+            color="gold"
+            mediaUrl="/icons/badge/user-placeholder.svg"
+          />
           <span>mobile</span>
           <WoodenCard label="Total members" TotalMembers={20} small />
         </div>
@@ -451,6 +543,12 @@ export default function Page() {
             expiry="08/25"
             iconSrc={"/components/bank-card-icon.svg"}
           />
+        </div>
+      </div>
+      <div className="grid w-full grid-cols-1 gap-4">
+        <span className="font-bold">Table</span>
+        <div className="w-full">
+          <DataTable table={paymentHistoryTable} />
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ import { Groups } from "./Groups";
 import FilterChips from "./FilterChips";
 import Status from "./Status";
 import GlassPanel from "./GlassPanel";
+import StarBadge from "./StarBadge";
 
 export {
   Status,
@@ -30,4 +31,5 @@ export {
   Radio,
   FaqItem,
   GlassPanel,
+  StarBadge,
 };

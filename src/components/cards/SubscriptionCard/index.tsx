@@ -22,7 +22,7 @@ function SubscriptionCard({
         src="/pages/profile/layer.png"
         fill
         alt="layer"
-        className="object-cover opacity-5"
+        className="object-cover opacity-2"
       />
       <div className="mb-1 flex w-full flex-wrap items-center justify-between gap-2">
         <h4 className="font-inter text-2xl leading-[135%] font-semibold text-white">
