@@ -1,6 +1,12 @@
 "use client";
 
-import { Button, FilterChips, StarBadge, Status } from "@/components/common";
+import {
+  Button,
+  FilterChips,
+  PriceCounter,
+  StarBadge,
+  Status,
+} from "@/components/common";
 import Radio from "@/components/common/Radio";
 import {
   CardTag,
@@ -28,6 +34,8 @@ import SubscriptionSettingCard from "@/components/cards/SubscriptionSettingCard"
 import SubscriptionCard from "@/components/cards/SubscriptionCard";
 import PaymentMethodCard from "@/components/cards/PaymentMethodCard";
 import { DataTable, TableData } from "@/components/common/Tables";
+import CurrentPerkCard from "@/components/cards/CurrentPerkCard";
+import CardCart from "@/components/cards/CardCart";
 
 export default function Page() {
   const iconComponents = [
@@ -542,6 +550,36 @@ export default function Page() {
             cardLast4="4578"
             expiry="08/25"
             iconSrc={"/components/bank-card-icon.svg"}
+          />
+        </div>
+        <span className="font-bold">Current Perk Card</span>
+        <div className="grid w-full grid-cols-1 gap-3">
+          <CurrentPerkCard
+            title="Burt"
+            price="€ 49"
+            period="/year"
+            expiresAt="Expires 12 April, 2026"
+          />
+        </div>
+        <span className="font-bold">Price Counter</span>
+        <div className="">
+          <PriceCounter
+            initialValue={1}
+            min={1}
+            max={100}
+            step={1}
+            onChange={() => {}}
+            value={1}
+          />
+        </div>
+        <span className="font-bold">Card cart</span>
+        <div className="grid grid-cols-1">
+          <CardCart
+            title="Spuffy Family Name"
+            image="/components/card-cart-image.png"
+            value={125}
+            initialQuantity={2}
+            onDelete={() => alert("Deleted")}
           />
         </div>
       </div>

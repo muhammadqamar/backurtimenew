@@ -14,6 +14,7 @@ import FilterChips from "./FilterChips";
 import Status from "./Status";
 import GlassPanel from "./GlassPanel";
 import StarBadge from "./StarBadge";
+import PriceCounter from "./PriceCounter";
 
 export {
   Status,
@@ -32,4 +33,5 @@ export {
   FaqItem,
   GlassPanel,
   StarBadge,
+  PriceCounter,
 };
