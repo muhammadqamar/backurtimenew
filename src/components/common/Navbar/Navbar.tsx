@@ -80,7 +80,7 @@ export default function Navbar({
           </div>
           <Link
             href="/dashboard"
-            className="flex items-center justify-start gap-x-6 px-5 py-4 transition-all duration-300 group-hover:justify-start group-hover:gap-x-6 xl:justify-center xl:gap-x-0"
+            className="flex items-center justify-start gap-x-4 px-5 py-4 transition-all duration-300 group-hover:justify-start group-hover:gap-x-4 xl:justify-center xl:gap-x-0"
           >
             <div className="shrink-0">
               <Help />
