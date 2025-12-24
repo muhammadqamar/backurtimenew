@@ -21,7 +21,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import React from "react";
+import React, { useState } from "react";
 import * as Icons from "../../components/icons";
 import { FaqItem } from "@/components/common";
 import MissionCard from "@/components/cards/mission_card";
@@ -43,8 +43,56 @@ import SubscriptionCard from "@/components/cards/SubscriptionCard";
 import ServeyCard from "@/components/cards/ServeyCard";
 import BuyMoreCard from "@/components/cards/BuyMoreCard";
 import MysteryCard from "@/components/cards/MysteryCard";
+import PaymentMethodAddDetailsCard from "@/components/cards/PaymentMethodAddDetailsCard";
+import PaymentMethodSelectedCard from "@/components/cards/PaymentMethodSelectedCard";
+import SelectPlanCard from "@/components/cards/SelectPlanCard";
 
 export default function Page() {
+  const [selectedId, setSelectedId] = useState<string | null>("visa-hdfc");
+
+  const paymentMethods = [
+    {
+      id: "time-balance-1",
+      type: "balance" as const,
+      bankName: "Time balance",
+      insufficientBalance: true,
+    },
+    {
+      id: "axis-1",
+      type: "card" as const,
+      bankName: "Axis Bank",
+      bankIconUrl: "/icons/master-icon.svg",
+      cardNumber: "4578457845784578",
+    },
+    {
+      id: "visa-hdfc",
+      type: "card" as const,
+      bankName: "VISA HDFC Bank",
+      bankIconUrl: "/icons/visa-icon.svg",
+      cardNumber: "4578457845784578",
+    },
+    {
+      id: "time-balance-2",
+      type: "balance" as const,
+      bankName: "Time balance",
+      insufficientBalance: false,
+    },
+    {
+      id: "axis-2",
+      type: "card" as const,
+      bankName: "Axis Bank",
+      bankIconUrl: "/icons/master-icon.svg",
+      cardNumber: "4578457845784578",
+    },
+    {
+      id: "visa-hdfc-2",
+      type: "card" as const,
+      bankName: "VISA HDFC Bank",
+      bankIconUrl: "/icons/visa-icon.svg",
+      cardNumber: "4578457845784578",
+    },
+  ];
+
   const iconComponents = [
     "Adds",
     "Clan",
@@ -319,7 +367,7 @@ export default function Page() {
         },
       },
       {
-        id: "player-2",
+        id: "player-3",
         type: "members-item",
         cells: {
           userId: { value: 1 },
@@ -537,7 +585,7 @@ export default function Page() {
           },
           method: {
             value: "Axim Bank **** 4578",
-            icon: "/icons/axim-bank.svg",
+            icon: "/icons/master-icon.svg",
           },
           tickets: { value: 123 },
           time: { value: "2 hours age" },
@@ -1006,6 +1054,7 @@ export default function Page() {
           price={1.99}
         />
       </div>
+<<<<<<< HEAD
       <span className="font-bold">Servery Card</span>
       <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <ServeyCard variant="priced" active={false} />
@@ -1038,6 +1087,43 @@ export default function Page() {
       <div className="w-max">
         <MysteryCard />
       </div>
+=======
+
+      <span className="font-bold">Payment Method Add Details Card</span>
+      <div className="grid grid-cols-1 gap-5">
+        <PaymentMethodAddDetailsCard />
+
+        {paymentMethods.map((method) => (
+          <PaymentMethodSelectedCard
+            key={method.id}
+            bankName={method.bankName}
+            bankIconUrl={method.bankIconUrl}
+            cardNumber={method.cardNumber}
+            type={method.type}
+            insufficientBalance={method.insufficientBalance}
+            selected={selectedId === method.id}
+            disabled={method.insufficientBalance}
+            onClick={() => {
+              if (!method.insufficientBalance) {
+                setSelectedId(method.id);
+                console.log("Selected:", method.bankName);
+              }
+            }}
+          />
+        ))}
+      </div>
+
+      <span className="font-bold">Payment Method Add Details Card</span>
+      <div className="mb-12 grid grid-cols-1 gap-5">
+        <SelectPlanCard isOpen={true} />
+        <SelectPlanCard variant="user-plan" />
+        <SelectPlanCard variant="user-plan" inSharePlan={false} />
+        <SelectPlanCard
+          variant="onboarding-plan"
+          planImage="/icons/clock-3d.svg"
+        />
+      </div>
+>>>>>>> a9bae6187425203033255e49115642f90cab6823
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function Button({
         variant === "secondary" &&
           `after:absolute after:top-0 after:left-5 after:h-full after:w-[calc(100%-40px)] after:bg-[url(/components/secondary-button/bottom.svg)] after:bg-contain after:bg-bottom after:bg-repeat-x`,
         className,
-        withBackgoundImage && "bg-cover! bg-center! bg-no-repeat!",
+        withBackgoundImage && "bg-cover bg-center! bg-no-repeat!",
         withTextDecoration && "text-shadow-[1px_2px_0_rgba(35,63,50,0.5)]",
       )}
       style={{
