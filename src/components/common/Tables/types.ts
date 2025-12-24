@@ -1,6 +1,3 @@
-import { LinkProps } from "next/link";
-import { ReactElement } from "react";
-
 export type TableRowType =
   | "leaderboard"
   | "payment-history"
@@ -18,28 +15,25 @@ export interface ColumnConfig {
 }
 
 export interface CellData {
-  value?: string | number | undefined;
+  value: string | number | boolean;
   className?: string;
-  icon?: string | React.ReactNode;
+  icon?: React.ReactNode;
   onClick?: () => void;
   iconOnClick?: () => void;
   href?: unknown;
   target?: string;
+  profileImage?: string;
+  clanName?: string;
+  render?: (params: { row: RowData }) => React.ReactNode;
+  clanIcon?: string;
 }
 
 export interface RenderCellData extends CellData {
   render: () => React.ReactNode;
-  value?: string | number;
 }
 
 export type TableCellData = CellData | RenderCellData;
 
-// Helper type guard
-export function isRenderCell(cell: TableCellData): cell is RenderCellData {
-  return "render" in cell && typeof cell.render === "function";
-}
-
-// Update RowData interface
 export interface RowData {
   id: string;
   type: TableRowType;
@@ -48,12 +42,18 @@ export interface RowData {
   onClick?: () => void;
   href?: unknown;
   target?: string;
+  meta?: {
+    [key: string]: unknown;
+  };
 }
+
 export interface TableData {
   id: string;
   type: TableRowType;
+  columns: ColumnConfig[];
+  rows: RowData[];
   title?: string;
   description?: string;
-  columns: ColumnConfig[];
-  rows: RowData[]; // Changed from 'data' to 'rows' for clarity
 }
+
+export type RowActionState = "chat" | "delete" | "edit" | "add";

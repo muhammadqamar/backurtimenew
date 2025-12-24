@@ -1,10 +1,17 @@
 import type { SVGProps } from "react";
-const SvgGame = (props: SVGProps<SVGSVGElement>) => (
+
+type IconProps = SVGProps<SVGSVGElement> & {
+  width?: number;
+  height?: number;
+};
+
+const SvgGame = ({ width = 21, height = 20, ...props }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={21}
-    height={20}
+    width={width}
+    height={height}
     fill="none"
+    viewBox="0 0 21 20"
     {...props}
   >
     <path

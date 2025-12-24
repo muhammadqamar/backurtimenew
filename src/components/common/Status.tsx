@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { cn } from "@/utils";
 import Image from "next/image";
 
 interface TypeProps {
-  icon?: boolean;
+  icon?: ReactElement;
   text?: string | number;
   rounded?: boolean;
   status?: "completed" | "in-completed";
@@ -58,7 +58,8 @@ const Status = ({
             : `${small ? "px-[11px] py-[3px]" : "px-[11px] py-[3px] sm:px-[15px] sm:py-[7px]"}`,
         )}
       >
-        {(icon || status === "completed") && (
+        {icon}
+        {status === "completed" && (
           <Image
             src="/icons/tick.svg"
             alt="tick"

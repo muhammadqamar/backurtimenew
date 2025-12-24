@@ -71,3 +71,4 @@ export { default as Shield } from "./Shield";
 export { default as Telegram } from "./Telegram";
 export { default as UnArchive } from "./UnArchive";
 export { default as Document } from "./Document";
+export { default as Wallet } from "./Wallet";

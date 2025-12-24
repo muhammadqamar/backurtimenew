@@ -28,6 +28,7 @@ import SubscriptionSettingCard from "@/components/cards/SubscriptionSettingCard"
 import SubscriptionCard from "@/components/cards/SubscriptionCard";
 import PaymentMethodCard from "@/components/cards/PaymentMethodCard";
 import { DataTable, TableData } from "@/components/common/Tables";
+import SvgWallet from "@/components/icons/Wallet";
 
 export default function Page() {
   const iconComponents = [
@@ -105,87 +106,447 @@ export default function Page() {
     "UnArchive",
   ];
 
-  const paymentHistoryTable: TableData = {
+  const paymentHistoryData: TableData = {
     id: "payment-history",
     type: "payment-history",
-    title: "Payment History",
+    title: "Payments history",
     columns: [
-      { header: "Name", accessorKey: "name" },
+      { header: "Name", accessorKey: "name", align: "center" },
       { header: "Email", accessorKey: "email" },
       { header: "Method", accessorKey: "method" },
       { header: "Amount", accessorKey: "amount" },
       { header: "Date", accessorKey: "date" },
-      { header: "Actions", accessorKey: "actions" },
     ],
     rows: [
       {
-        id: "payment-1",
+        id: "player-1",
         type: "payment-history",
-        onClick: () => alert("Clicked entire row!"),
         cells: {
-          name: {
-            value: "John Doe",
-            icon: "",
-            onClick: () => alert("Clicked name cell"),
-            iconOnClick: () => alert("Clicked user icon"),
+          name: { value: "name" },
+          email: { value: "Alex Champion" },
+          method: { value: "Time balance", icon: <SvgWallet size={20} /> },
+          amount: { value: "name 2" },
+          date: { value: "name 4" },
+        },
+      },
+    ],
+  };
+  const leaderboardData: TableData = {
+    id: "leaderboard",
+    type: "leaderboard",
+    title: "Leaderboard",
+    columns: [
+      { header: "User ID", accessorKey: "userId" },
+      { header: "Profile", accessorKey: "profile" },
+      { header: "Other Clans", accessorKey: "otherClans" },
+      { header: "Strategist", accessorKey: "strategist" },
+      { header: "Tag", accessorKey: "tag" },
+    ],
+    rows: [
+      {
+        id: "player-1",
+        type: "leaderboard",
+        cells: {
+          userId: { value: 4 },
+          profile: { value: "Alex Champion" },
+          strategist: { value: "Strategist" },
+          tag: { value: 123 },
+        },
+      },
+      {
+        id: "player-2",
+        type: "leaderboard",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Alex ",
+            profileImage: "/components/mock_user_avatar.png",
           },
-          email: {
-            value: "john@example.com",
-            icon: "",
-            href: "mailto:john@example.com",
-            onClick: () => alert("This won't fire because href exists"),
+          otherClans: {
+            value: "Clanname",
+            icon: "/icons/clan-lable/gold-1.svg",
+          },
+          strategist: { value: "Strategist" },
+          tag: { value: 128 },
+        },
+      },
+    ],
+  };
+
+  const drawsItemData: TableData = {
+    id: "draws-item",
+    type: "draws-item",
+    title: "Draws Item",
+    columns: [
+      { header: "User ID", accessorKey: "userId" },
+      { header: "Profile", accessorKey: "profile" },
+      { header: "Prize", accessorKey: "prize" },
+      { header: "Tickets", accessorKey: "tickets" },
+      { header: "Time", accessorKey: "time" },
+    ],
+    rows: [
+      {
+        id: "player-1",
+        type: "draws-item",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Alex Champion",
+            profileImage: "/components/mock_user_avatar.png",
+            clanName: "clan name",
+            icon: "/icons/clan-lable/gold-1.svg",
+          },
+          prize: { value: "iPhone 16 Pro" },
+          tickets: { value: 123 },
+          time: { value: "2 hours age" },
+        },
+      },
+    ],
+  };
+
+  const rewardData: TableData = {
+    id: "reward",
+    type: "reward",
+    title: "Reward",
+    columns: [
+      { header: "User ID", accessorKey: "userId" },
+      { header: "Profile", accessorKey: "profile" },
+      { header: "Status", accessorKey: "status" },
+      { header: "Items", accessorKey: "items" },
+      { header: "Time", accessorKey: "time" },
+    ],
+    rows: [
+      {
+        id: "player-1",
+        type: "reward",
+        cells: {
+          userId: { value: 1 },
+          profile: {
+            value: "Alex Champion",
+            profileImage: "/components/mock_user_avatar.png",
+          },
+          status: { value: "completed" },
+          items: { value: 123 },
+          time: { value: "2 hours age" },
+        },
+      },
+      {
+        id: "player-2",
+        type: "reward",
+        cells: {
+          userId: { value: 1 },
+          profile: {
+            value: "Alex Champion",
+            profileImage: "/components/mock_user_avatar.png",
+          },
+          status: { value: "" },
+          items: { value: 123 },
+          time: { value: "2 hours age" },
+        },
+      },
+    ],
+  };
+  const MembersItemData: TableData = {
+    id: "members-item",
+    type: "members-item",
+    title: "members item",
+    columns: [
+      { header: "User ID", accessorKey: "userId" },
+      { header: "Profile", accessorKey: "profile" },
+      { header: "price", accessorKey: "price" },
+      { header: "", accessorKey: "actions" },
+    ],
+    rows: [
+      {
+        id: "player-1",
+        type: "members-item",
+        cells: {
+          userId: { value: 1 },
+          profile: {
+            value: "Alex Champion",
+            profileImage: "/components/mock_user_avatar.png",
+          },
+          price: { value: "Price: € 7.42" },
+          action: { value: "" },
+        },
+      },
+      {
+        id: "player-2",
+        type: "members-item",
+        cells: {
+          userId: { value: 1 },
+          profile: {
+            value: "Alex Champion",
+            profileImage: "/components/mock_user_avatar.png",
+          },
+          price: { value: "Price: € 7.42" },
+          actions: {
+            value: "",
+            render: () => (
+              <div className="flex w-full items-center justify-end gap-4">
+                <Button
+                  className="group border-primitives-white_10 bg-primitives-white_10 size-9! min-h-auto! min-w-auto! shrink-0! rounded-full border backdrop-blur-xs"
+                  icon={
+                    <Icons.Message
+                      size={20}
+                      className="[&_path]:stroke-white"
+                    />
+                  }
+                />
+                <Button
+                  className="group border-primitives-white_10 bg-primitives-white_10 size-9! min-h-auto! min-w-auto! shrink-0! rounded-full border backdrop-blur-xs"
+                  icon={
+                    <Icons.Trash size={20} className="[&_path]:stroke-white" />
+                  }
+                />
+              </div>
+            ),
+          },
+        },
+      },
+      {
+        id: "player-2",
+        type: "members-item",
+        cells: {
+          userId: { value: 1 },
+          profile: {
+            value: "Alex Champion",
+            profileImage: "/components/mock_user_avatar.png",
+          },
+          price: { value: "Price: € 7.42" },
+          actions: {
+            value: "",
+            render: () => (
+              <div className="flex w-full items-center justify-end gap-4">
+                <Button
+                  className="group border-primitives-white_10 bg-primitives-white_10 size-9! min-h-auto! min-w-auto! shrink-0! rounded-full border backdrop-blur-xs"
+                  icon={
+                    <Icons.Plus size={20} className="[&_path]:stroke-white" />
+                  }
+                />
+              </div>
+            ),
+          },
+        },
+      },
+      {
+        id: "player-2",
+        type: "members-item",
+        cells: {
+          userId: { value: 1 },
+          profile: {
+            value: "Alex Champion",
+            profileImage: "/components/mock_user_avatar.png",
+          },
+          price: { value: "Price: € 7.42" },
+          actions: {
+            value: "",
+            render: () => (
+              <div className="flex w-full items-center justify-end gap-4">
+                <Button
+                  className="group border-primitives-white_10 bg-primitives-white_10 size-9! min-h-auto! min-w-auto! shrink-0! rounded-full border backdrop-blur-xs"
+                  icon={
+                    <Icons.Edit size={20} className="[&_path]:stroke-white" />
+                  }
+                />
+              </div>
+            ),
+          },
+        },
+      },
+    ],
+  };
+
+  const rewardsItemData: TableData = {
+    id: "rewards",
+    type: "rewards",
+    title: "Draws Item",
+    columns: [
+      { header: "User ID", accessorKey: "userId" },
+      { header: "Profile", accessorKey: "profile" },
+      { header: "Prize", accessorKey: "prize" },
+      { header: "Tickets", accessorKey: "tickets" },
+      { header: "Time", accessorKey: "time" },
+      { header: "Member Duration", accessorKey: "memberDuration" },
+    ],
+    rows: [
+      {
+        id: "player-1",
+        type: "rewards",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+            profileImage: "/components/mock_user_avatar.png",
+            clanName: "Clanname",
+            icon: "/icons/clan-lable/gold-1.svg",
+          },
+          prize: { value: "365 days strike" },
+          tickets: { value: "40 000" },
+          time: { value: "Member for 869 days" },
+          memberDuration: { value: "869 days", icon: "/icons/fire.svg" },
+        },
+      },
+      {
+        id: "player-2",
+        type: "rewards",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+            profileImage: "/components/mock_user_avatar.png",
+            clanName: "Clanname",
+            icon: "/icons/clan-lable/gold-1.svg",
+          },
+          prize: { value: "365 days strike" },
+          tickets: { value: "40 000" },
+          time: { value: "Member for 869 days" },
+          memberDuration: { value: "869 days", icon: "/icons/fire.svg" },
+        },
+      },
+      {
+        id: "player-3",
+        type: "rewards",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+            profileImage: "/components/mock_user_avatar.png",
+            clanName: "Clanname",
+            icon: "/icons/clan-lable/gold-1.svg",
+          },
+          prize: { value: "365 days strike" },
+          tickets: { value: "40 000" },
+          time: { value: "Member for 869 days" },
+          memberDuration: { value: "869 days", icon: "/icons/fire.svg" },
+        },
+      },
+      {
+        id: "player-4",
+        type: "rewards",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+            profileImage: "/components/mock_user_avatar.png",
+            clanName: "Clanname",
+            icon: "/icons/clan-lable/gold-1.svg",
+          },
+          prize: { value: "iPhone 16 Pro" },
+          tickets: { value: "120 000" },
+          time: { value: "2 hours ago" },
+          memberDuration: { value: "N/A" },
+        },
+      },
+    ],
+  };
+
+  const CompletedHistoryItemRowData: TableData = {
+    id: "completed-history-item",
+    type: "completed-history-item",
+    title: "completed history item",
+    columns: [
+      { header: "User ID", accessorKey: "userId" },
+      { header: "Profile", accessorKey: "profile" },
+      { header: "Tag", accessorKey: "tag" },
+      { header: "Method", accessorKey: "method" },
+      { header: "Tickets", accessorKey: "tickets" },
+      { header: "Time", accessorKey: "time" },
+      { header: "", accessorKey: "actions" },
+    ],
+    rows: [
+      {
+        id: "player-1",
+        type: "completed-history-item",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+            profileImage: "/components/mock_user_avatar.png",
+          },
+          tag: {
+            value: "",
+            render: () => (
+              <Status
+                text="Game"
+                status={"in-completed"}
+                rounded
+                type="gold"
+                icon={<Icons.Game />}
+                className="[&>div]:gap-2! [&>div]:px-[11px]! [&>div]:py-[9px]! [&>div>span]:text-sm!"
+              />
+            ),
+          },
+          tickets: { value: 123 },
+          time: { value: "2 hours age" },
+        },
+      },
+      {
+        id: "2",
+        type: "completed-history-item",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+          },
+          tag: { value: "text" },
+          tickets: { value: 123 },
+          time: { value: "2 hours age" },
+        },
+      },
+
+      {
+        id: "3",
+        type: "completed-history-item",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+            icon: "/icons/gold-cup.svg",
+            profileImage: "/components/mock_user_avatar.png",
+            clanName: "Clanename",
+            clanIcon: "/icons/clan-lable/gold-1.svg",
+          },
+
+          tickets: { value: 123 },
+          time: { value: "2 hours age" },
+        },
+      },
+      {
+        id: "4",
+        type: "completed-history-item",
+        cells: {
+          userId: { value: 4 },
+          profile: {
+            value: "Title",
+            profileImage: "/components/mock_user_avatar.png",
           },
           method: {
-            value: "Credit Card",
-            icon: "",
-            onClick: () => alert("Clicked payment method"),
+            value: "Axim Bank **** 4578",
+            icon: "/icons/axim-bank.svg",
           },
-          amount: {
-            value: "€ 7.42",
-            icon: "",
-            onClick: () => alert("Clicked amount"),
+          tickets: { value: 123 },
+          time: { value: "2 hours age" },
+        },
+      },
+      {
+        id: "43",
+        type: "completed-history-item",
+        cells: {
+          profile: {
+            value: "10 missions",
+            profileImage: "/components/mock_user_avatar.png",
           },
-          date: {
-            value: "12 April, 2025",
-            icon: "",
-            onClick: () => alert("Clicked date"),
-          },
+
+          tickets: { value: 123 },
           actions: {
-            value: "", // This can be empty or used as fallback
+            value: "",
             render: () => (
-              // Move render here as a property
-              <div className="flex gap-2">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    alert("View details");
-                  }}
-                  className="rounded p-2 text-blue-600 hover:bg-blue-100"
-                  title="View"
-                >
-                  View
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    alert("Edit");
-                  }}
-                  className="rounded p-2 text-green-600 hover:bg-green-100"
-                  title="Edit"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    alert("Delete");
-                  }}
-                  className="rounded p-2 text-red-600 hover:bg-red-100"
-                  title="Delete"
-                >
-                  Delete
-                </button>
-              </div>
+              <Button
+                className="ml-auto w-max"
+                title="Claim "
+                variant="secondary"
+              />
             ),
           },
         },
@@ -195,6 +556,22 @@ export default function Page() {
 
   return (
     <div className="bg-dark mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-8 text-white">
+      <div className="grid w-full grid-cols-1 gap-4">
+        <span className="font-bold">Table</span>
+        <div className="flex w-full flex-col gap-6">
+          <DataTable
+            table={paymentHistoryData}
+            rowsSpace="0"
+            isTableHeader={true}
+          />
+          <DataTable table={leaderboardData} isTableHeader={true} />
+          <DataTable table={drawsItemData} />
+          <DataTable table={rewardData} />
+          <DataTable table={MembersItemData} />
+          <DataTable table={rewardsItemData} />
+          <DataTable table={CompletedHistoryItemRowData} />
+        </div>
+      </div>
       {/* Button */}
       <div className="">
         <span className="font-semibold">Button</span>
@@ -543,12 +920,6 @@ export default function Page() {
             expiry="08/25"
             iconSrc={"/components/bank-card-icon.svg"}
           />
-        </div>
-      </div>
-      <div className="grid w-full grid-cols-1 gap-4">
-        <span className="font-bold">Table</span>
-        <div className="w-full">
-          <DataTable table={paymentHistoryTable} />
         </div>
       </div>
     </div>

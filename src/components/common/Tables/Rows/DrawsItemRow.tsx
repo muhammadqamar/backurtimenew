@@ -1,70 +1,96 @@
+import React from "react";
+import Image from "next/image";
+import { Clock } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { TableRow, TableCell } from "@/components/ui/table";
-
-import { Gift, Users, Clock } from "lucide-react";
-import { CellData, ColumnConfig } from "../types";
+import { ColumnConfig, RowData } from "../types";
+import { cn } from "@/lib/utils";
+import { isRenderCell } from "../type-guards";
+import { Drawings, PresentBox } from "@/components/icons";
 
 interface DrawsItemRowProps {
-  data: CellData & { [key: string]: any };
+  rowData: RowData;
   columns: ColumnConfig[];
-  index: number;
 }
 
-export function DrawsItemRow({ data, columns, index }: DrawsItemRowProps) {
+export function DrawsItemRow({ rowData, columns }: DrawsItemRowProps) {
   return (
-    <TableRow className="transition-colors hover:bg-purple-100">
+    <TableRow className="group">
       {columns.map((column) => {
-        const value = data[column.accessorKey as string];
-
-        switch (column.accessorKey) {
-          case "draw":
-            return (
-              <TableCell key="draw">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100">
-                    <Gift className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">{value}</p>
-                    <p className="text-sm text-gray-500">Draw #{data.drawId}</p>
-                  </div>
-                </div>
-              </TableCell>
-            );
-
-          case "prize":
-            return (
-              <TableCell key="prize" className="font-bold text-purple-700">
-                {value}
-              </TableCell>
-            );
-
-          case "entries":
-            return (
-              <TableCell key="entries">
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-gray-400" />
-                  <span>{value}</span>
-                  <span className="text-sm text-gray-500">entries</span>
-                </div>
-              </TableCell>
-            );
-
-          case "time":
-            return (
-              <TableCell key="time">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-400" />
-                  <span className="text-gray-600">{value}</span>
-                </div>
-              </TableCell>
-            );
-
-          case "action":
-            return <TableCell key="action"></TableCell>;
-
-          default:
-            return <TableCell key={column.accessorKey}>{value}</TableCell>;
+        const cell = rowData.cells[column.accessorKey];
+        if (!cell || isRenderCell(cell)) {
+          return (
+            <TableCell
+              key={column.accessorKey}
+              className={cn(
+                "bg-primitives-white_10 py-2 first:rounded-tl-2xl first:rounded-bl-2xl first:pl-3 last:rounded-tr-2xl last:rounded-br-2xl last:pr-3 sm:py-3 sm:first:pl-4 sm:last:pr-4",
+              )}
+            ></TableCell>
+          );
         }
+        return (
+          <TableCell
+            key={column.accessorKey}
+            className={cn(
+              "bg-primitives-white_10 py-2 first:rounded-tl-2xl first:rounded-bl-2xl first:pl-3 last:rounded-tr-2xl last:rounded-br-2xl last:pr-3 sm:py-3 sm:first:pl-4 sm:last:pr-4",
+            )}
+          >
+            <div
+              className={cn(
+                "flex items-center gap-2 text-white sm:gap-3",
+                cell.className,
+              )}
+            >
+              {column.accessorKey !== "profile" && (
+                <>
+                  {typeof cell.icon === "string" && (
+                    <Image
+                      src={cell.icon as string}
+                      alt={cell.value as string}
+                      width={20}
+                      height={20}
+                      className="shrink-0 object-contain"
+                    />
+                  )}
+                  {React.isValidElement(cell.icon) && cell.icon}
+                </>
+              )}
+              {column.accessorKey === "prize" && <PresentBox size={20} />}
+              {column.accessorKey === "tickets" && <Drawings size={20} />}
+              {column.accessorKey === "time" && <Clock size={20} />}
+              {column.accessorKey === "profile" ? (
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <Avatar className="size-8 overflow-hidden rounded-full sm:size-10!">
+                    <AvatarImage
+                      src={cell.profileImage || "https://github.com/shadcn.png"}
+                      alt={cell.value as string}
+                    />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <span className="font-inter text-base leading-[150%] font-medium">
+                    {cell.value}
+                  </span>
+                  <div className="bg-primitives-white_10 flex items-center gap-2 rounded-[8px] px-2 py-1">
+                    <Image
+                      src={cell.icon as string}
+                      alt={cell.value as string}
+                      width={20}
+                      height={15}
+                      className="shrink-0 object-contain"
+                    />
+                    <p className="font-inter hidden text-base leading-[140%] font-normal sm:block">
+                      {cell.clanName}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <p className="font-inter flex items-center text-base leading-[150%] font-medium">
+                  {cell.value}
+                </p>
+              )}
+            </div>
+          </TableCell>
+        );
       })}
     </TableRow>
   );

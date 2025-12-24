@@ -5,7 +5,7 @@ import { CompletedHistoryItemRow } from "./CompletedHistoryItemRow";
 import { RewardRow } from "./RewardRow";
 import { MembersItemRow } from "./MembersItemRow";
 import { RewardsRow } from "./RewardsRow";
-import { BaseRow } from "./BaseRow";
+import { RowFactory } from "./RowFactory";
 export {
   PaymentHistoryRow,
   LeaderboardRow,
@@ -14,5 +14,5 @@ export {
   RewardRow,
   MembersItemRow,
   RewardsRow,
-  BaseRow,
+  RowFactory,
 };
