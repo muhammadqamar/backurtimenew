@@ -30,7 +30,7 @@ export default function StarBadge({
         src={`/icons/star-badge/${color}.svg`}
         alt={color + "image"}
         fill
-        className="object-cover"
+        className="object-contain"
       />
       <div
         className={cn(

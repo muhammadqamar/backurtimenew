@@ -41,6 +41,8 @@
   --drop-shadow-icon-gold: 0 8px 10px rgba(241, 158, 19, 0.5);
   --drop-shadow-medallions-gold: 0px 6.16px 9.24px #eab02066;
   --drop-shadow-icon-gold-lg: 0 3px 40px #ffb042;
+  --drop-shadow-key-gold: 1.195px 7.171px 8px rgba(212, 139, 32, 0.6);
+  --shadow-key-gold: 0 2.39px 4.781px 0 #d2ab68 inset;
   --shadow-stone:
     0 4px 81.9px 0 rgba(54, 255, 255, 0.2) inset,
     0 -2px 5px 0 rgba(54, 255, 255, 0.4) inset,
@@ -52,6 +54,7 @@
   --shadow-sm-dark: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   --shadow-light-sm: 0 1px 0 0 rgba(255, 255, 255, 0.3) inset;
   --shadow-green-sm: 0 4px 50px 0 rgba(54, 255, 255, 0.4);
+  --shadow-green-md: 0 4px 20px 0 rgba(54, 255, 255, 0.2) inset;
   --shadow-button: 1px 0px 10.2px 0px rgba(0, 255, 234, 0.6);
 
   --text-shadow-title-green:
