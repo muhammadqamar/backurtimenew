@@ -21,7 +21,7 @@ export default function StarBadge({
       className={cn(
         className,
         `drop-shadow-star-badge relative flex aspect-square items-center justify-center rounded-full`,
-        size === "large" && "h-[66px] w-[62px]",
+        size === "large" && "h-[42px] w-[38.33px] sm:h-[66px] sm:w-[62px]",
         size === "medium" && "h-[42px] w-[38.33px]",
         size === "small" && "h-[29px] w-[27px]",
       )}
@@ -36,7 +36,7 @@ export default function StarBadge({
         className={cn(
           "absolute rounded-full",
           size === "large" &&
-            "top-2.5 left-[5.5px] h-[calc(100%-15px)] w-[calc(100%-11px)]",
+            "top-[inherit] bottom-[3.3px] left-[3px] h-[calc(100%-9.7px)] w-[calc(100%-6px)] sm:top-2.5 sm:bottom-[inherit] sm:left-[5.5px] sm:h-[calc(100%-15px)] sm:w-[calc(100%-11px)]",
           size === "medium" &&
             "bottom-[3.3px] left-[3px] h-[calc(100%-9.7px)] w-[calc(100%-6px)]",
           size === "small" &&
@@ -57,7 +57,7 @@ export default function StarBadge({
         className={cn(
           `absolute rounded-full object-contain object-center`,
           size === "large" &&
-            "top-2.5 left-[5.5px] h-[calc(100%-15px)]! w-[calc(100%-11px)]!",
+            "top-[inherit] bottom-[3.3px] left-[3px] h-[calc(100%-9.7px)]! w-[calc(100%-6px)]! sm:top-2.5 sm:bottom-[inherit] sm:left-[5.5px] sm:h-[calc(100%-15px)]! sm:w-[calc(100%-11px)]!",
           size === "medium" &&
             "bottom-[3.3px] left-[3px] h-[calc(100%-9.7px)]! w-[calc(100%-6px)]!",
           size === "small" &&

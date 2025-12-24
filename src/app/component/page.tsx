@@ -1,6 +1,13 @@
 "use client";
 
-import { Button, FilterChips, StarBadge, Status } from "@/components/common";
+import {
+  Button,
+  FilterChips,
+  PriceCounter,
+  ShareSubscriptItem,
+  StarBadge,
+  Status,
+} from "@/components/common";
 import Radio from "@/components/common/Radio";
 import {
   CardTag,
@@ -25,10 +32,14 @@ import WoodenCard from "@/components/cards/WoodenCard";
 import LiveDonateCard from "@/components/cards/LiveDonateCard";
 import PrizeCard from "@/components/cards/PrizeCard";
 import SubscriptionSettingCard from "@/components/cards/SubscriptionSettingCard";
-import SubscriptionCard from "@/components/cards/SubscriptionCard";
+import SubscriptionPaymentCard from "@/components/cards/SubscriptionPaymentCard";
 import PaymentMethodCard from "@/components/cards/PaymentMethodCard";
 import { DataTable, TableData } from "@/components/common/Tables";
 import SvgWallet from "@/components/icons/Wallet";
+import CurrentPerkCard from "@/components/cards/CurrentPerkCard";
+import CardCart from "@/components/cards/CardCart";
+import HorizontalCard from "@/components/cards/HorizontalCard";
+import SubscriptionCard from "@/components/cards/SubscriptionCard";
 
 export default function Page() {
   const iconComponents = [
@@ -888,14 +899,14 @@ export default function Page() {
             isOwner={false}
           />
         </div>
-        <span className="font-bold">Subscription Card</span>
+        <span className="font-bold">Subscription Payment Card</span>
         <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          <SubscriptionCard
+          <SubscriptionPaymentCard
             isButton={false}
             name="Netflix Premium"
             price={22.27}
           />
-          <SubscriptionCard
+          <SubscriptionPaymentCard
             isButton={true}
             name="Netflix Premium"
             price={22.27}
@@ -921,6 +932,72 @@ export default function Page() {
             iconSrc={"/components/bank-card-icon.svg"}
           />
         </div>
+        <span className="font-bold">Current Perk Card</span>
+        <div className="grid w-full grid-cols-1 gap-3">
+          <CurrentPerkCard
+            title="Burt"
+            price="€ 49"
+            period="/year"
+            expiresAt="Expires 12 April, 2026"
+          />
+        </div>
+        <span className="font-bold">Price Counter</span>
+        <div className="">
+          <PriceCounter
+            initialValue={1}
+            min={1}
+            max={100}
+            step={1}
+            onChange={() => {}}
+            value={1}
+          />
+        </div>
+        <span className="font-bold">Card cart</span>
+        <div className="grid grid-cols-1">
+          <CardCart
+            title="Spuffy Family Name"
+            image="/components/card-cart-image.png"
+            value={125}
+            initialQuantity={2}
+            onDelete={() => alert("Deleted")}
+          />
+        </div>
+      </div>
+
+      <span className="font-bold">Horizontal card</span>
+      <div className="grid grid-cols-1">
+        <HorizontalCard
+          title="YouTube Premium:"
+          description="Enjoy your favorite videos for free, but be prepared for lots of ad interruptions. This version is ideal for occasional use, but ads can quickly become annoying if you consume a lot of content."
+          iconSrc="/components/youtube-red.svg"
+        />
+      </div>
+      <span className="font-bold">Share Subscript Item </span>
+      <div className="grid grid-cols-1">
+        <ShareSubscriptItem iconSrc="/icons/spotify.svg" />
+      </div>
+      <span className="font-bold">Subscription Card</span>
+      <div className="grid grid-cols-3 gap-4">
+        <SubscriptionCard
+          logo="/icons/youtub-white.svg"
+          name="YouTube Premium"
+          variant="green"
+        />
+        <SubscriptionCard
+          logo="/icons/youtub-white.svg"
+          name="YouTube Premium"
+          variant="gold"
+        />
+        <SubscriptionCard
+          logo="/icons/youtub-white.svg"
+          name="YouTube Premium"
+          variant="blue"
+        />
+        <SubscriptionCard
+          logo="/icons/youtub-white.svg"
+          name="YouTube Premium"
+          variant="silver"
+        />
       </div>
     </div>
   );
