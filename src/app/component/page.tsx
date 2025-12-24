@@ -1054,7 +1054,6 @@ export default function Page() {
           price={1.99}
         />
       </div>
-<<<<<<< HEAD
       <span className="font-bold">Servery Card</span>
       <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <ServeyCard variant="priced" active={false} />
@@ -1087,7 +1086,6 @@ export default function Page() {
       <div className="w-max">
         <MysteryCard />
       </div>
-=======
 
       <span className="font-bold">Payment Method Add Details Card</span>
       <div className="grid grid-cols-1 gap-5">
@@ -1123,7 +1121,6 @@ export default function Page() {
           planImage="/icons/clock-3d.svg"
         />
       </div>
->>>>>>> a9bae6187425203033255e49115642f90cab6823
     </div>
   );
 }
