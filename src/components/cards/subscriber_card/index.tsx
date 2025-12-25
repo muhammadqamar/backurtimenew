@@ -1,14 +1,30 @@
+import { Button } from "@/components/common";
+import { Plus } from "@/components/icons";
 import { cn } from "@/utils";
 import Image from "next/image";
+import { ReactEventHandler } from "react";
 interface subscriptionProps {
   status: string;
   logo: string;
   name: string;
   member: number;
+  buttonText?: string;
+  inAddButton?: boolean;
+  onClick?: ReactEventHandler;
+  onAdd?: ReactEventHandler;
 }
 
 const SubscriptionOwnerCard = (data: subscriptionProps) => {
-  const { status, logo, name, member } = data;
+  const {
+    status,
+    logo,
+    name,
+    member,
+    buttonText,
+    inAddButton = false,
+    onClick,
+    onAdd,
+  } = data;
   return (
     <div className="bg-white-10 relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-[42px] p-1">
       <div
@@ -73,25 +89,21 @@ const SubscriptionOwnerCard = (data: subscriptionProps) => {
             1/{member} members
           </p>
         </div>
-        <button className="relative flex min-h-12 w-full items-center justify-center p-[13px]">
-          <span className="font-cinzel text-lg leading-[122%]! font-bold text-white">
-            Access The Subscription
-          </span>
-          <Image
-            src="/components/frame-left-btn.svg"
-            alt="btn"
-            width={20}
-            height={48}
-            className="absolute top-0 right-0 h-full w-5 object-cover object-right"
+        <div className="flex items-center gap-2">
+          <Button
+            className="w-full"
+            onClick={onClick}
+            title={buttonText}
+            variant="secondary"
           />
-          <Image
-            src="/components/frame-btn.svg"
-            alt="btn"
-            width={20}
-            height={48}
-            className="absolute top-0 left-0 h-full min-h-12 w-[calc(100%-20px)] object-cover object-left"
-          />
-        </button>
+          {inAddButton && (
+            <Button
+              onClick={onAdd}
+              className="bg-primitives-white_10 border-primitives-white_10 flex w-12! min-w-12 shrink-0 items-center justify-center gap-3 rounded-full! border p-0!"
+              icon={<Plus className="[&_path]:stroke-white!" />}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

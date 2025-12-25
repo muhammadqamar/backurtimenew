@@ -40,9 +40,6 @@ import CurrentPerkCard from "@/components/cards/CurrentPerkCard";
 import CardCart from "@/components/cards/CardCart";
 import HorizontalCard from "@/components/cards/HorizontalCard";
 import SubscriptionCard from "@/components/cards/SubscriptionCard";
-import ServeyCard from "@/components/cards/ServeyCard";
-import BuyMoreCard from "@/components/cards/BuyMoreCard";
-import MysteryCard from "@/components/cards/MysteryCard";
 import PaymentMethodAddDetailsCard from "@/components/cards/PaymentMethodAddDetailsCard";
 import PaymentMethodSelectedCard from "@/components/cards/PaymentMethodSelectedCard";
 import SelectPlanCard from "@/components/cards/SelectPlanCard";
@@ -1053,38 +1050,6 @@ export default function Page() {
           variant="silver"
           price={1.99}
         />
-      </div>
-      <span className="font-bold">Servery Card</span>
-      <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <ServeyCard variant="priced" active={false} />
-        <ServeyCard active={false} variant="default" />
-      </div>
-      <span className="font-bold">Buy More Card</span>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        <BuyMoreCard
-          iconSrc="/icons/key.svg"
-          keyValue={100}
-          buttonText="Buy € 14"
-        />
-        <BuyMoreCard
-          iconSrc="/icons/key.svg"
-          keyValue={100}
-          buttonText="Buy € 14"
-        />
-        <BuyMoreCard
-          iconSrc="/icons/key.svg"
-          keyValue={100}
-          buttonText="Buy € 12"
-        />
-        <BuyMoreCard
-          iconSrc="/icons/key.svg"
-          keyValue={100}
-          buttonText="Buy € 13"
-        />
-      </div>
-      <span className="font-bold">Mystery Card</span>
-      <div className="w-max">
-        <MysteryCard />
       </div>
 
       <span className="font-bold">Payment Method Add Details Card</span>

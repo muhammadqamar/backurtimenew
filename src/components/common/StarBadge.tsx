@@ -2,10 +2,11 @@ import { cn } from "@/utils";
 import Image from "next/image";
 
 type StarBadgeProps = {
-  color?: "gold" | "green" | "blue" | "silver" | "cooper";
+  color?: "gold" | "green" | "blue" | "sliver" | "cooper";
   mediaUrl?: string;
   className?: string;
   bgWhite?: boolean;
+  imageClassName?: string;
   size?: "small" | "medium" | "large";
 };
 
@@ -15,12 +16,13 @@ export default function StarBadge({
   className,
   bgWhite = false,
   size = "large",
+  imageClassName,
 }: StarBadgeProps) {
   return (
     <div
       className={cn(
         className,
-        `drop-shadow-star-badge relative flex aspect-square items-center justify-center rounded-full`,
+        `drop-shadow-star-badge relative flex aspect-square shrink-0 items-center justify-center rounded-full`,
         size === "large" && "h-[42px] w-[38.33px] sm:h-[66px] sm:w-[62px]",
         size === "medium" && "h-[42px] w-[38.33px]",
         size === "small" && "h-[29px] w-[27px]",
@@ -30,11 +32,11 @@ export default function StarBadge({
         src={`/icons/star-badge/${color}.svg`}
         alt={color + "image"}
         fill
-        className="object-contain"
+        className="shrink-0 object-contain"
       />
       <div
         className={cn(
-          "absolute rounded-full",
+          "absolute shrink-0 rounded-full",
           size === "large" &&
             "top-[inherit] bottom-[3.3px] left-[3px] h-[calc(100%-9.7px)] w-[calc(100%-6px)] sm:top-2.5 sm:bottom-[inherit] sm:left-[5.5px] sm:h-[calc(100%-15px)] sm:w-[calc(100%-11px)]",
           size === "medium" &&
@@ -55,6 +57,7 @@ export default function StarBadge({
         width={41}
         height={41}
         className={cn(
+          imageClassName,
           `absolute rounded-full object-contain object-center`,
           size === "large" &&
             "top-[inherit] bottom-[3.3px] left-[3px] h-[calc(100%-9.7px)]! w-[calc(100%-6px)]! sm:top-2.5 sm:bottom-[inherit] sm:left-[5.5px] sm:h-[calc(100%-15px)]! sm:w-[calc(100%-11px)]!",

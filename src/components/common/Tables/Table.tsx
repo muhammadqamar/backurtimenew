@@ -1,5 +1,11 @@
 import React from "react";
-import { Table, TableBody, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { TableData } from "./types";
 import { cn } from "@/utils";
 import { RowFactory } from "./Rows";
@@ -19,12 +25,7 @@ export function DataTable({
   className,
 }: DataTableProps) {
   return (
-    <Table
-      className={cn("border-separate", className)}
-      style={{
-        borderSpacing: `0 ${rowsSpace ?? "20px"}`,
-      }}
-    >
+    <Table className={cn(className)}>
       <TableHeader className={!isTableHeader ? "hidden" : ""}>
         <TableRow>
           {table.columns.map((column, index) => (
@@ -42,8 +43,30 @@ export function DataTable({
       </TableHeader>
 
       <TableBody>
-        {table.rows.map((row) => (
-          <RowFactory key={row.id} rowData={row} columns={table.columns} />
+        {isTableHeader && (
+          <TableRow
+            style={{
+              height: `${rowsSpace ?? "20px"}`,
+            }}
+          >
+            <TableCell key={`empty-0`}></TableCell>
+          </TableRow>
+        )}
+        {table.rows.map((row, index) => (
+          <>
+            <RowFactory key={row.id} rowData={row} columns={table.columns} />
+            {index < table.rows.length - 1 && (
+              <TableRow
+                style={{
+                  height: `${rowsSpace ?? "20px"}`,
+                }}
+              >
+                {table.columns.map((column, colIndex) => (
+                  <TableCell key={`empty-${colIndex}`}></TableCell>
+                ))}
+              </TableRow>
+            )}
+          </>
         ))}
       </TableBody>
     </Table>

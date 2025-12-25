@@ -46,7 +46,7 @@ export default function DashboardLayout({
   };
   return (
     <div
-      className="bg-black-normal flex h-full w-full overflow-auto bg-scroll pb-16 sm:pb-0"
+      className="bg-black-normal relative flex h-full w-full bg-scroll pb-16 sm:pb-0"
       style={{
         background: `linear-gradient(180deg, rgba(8, 21, 29, 0.00) 1.92%, #08151D 75.41%), url(${bg}) lightgray 50% / cover no-repeat`,
       }}
@@ -55,7 +55,7 @@ export default function DashboardLayout({
         setIsMobileSidebar={setIsMobileSidebar}
         isMobileSidebar={isMobileSidebar}
       />
-      <div className="main-content h-full! w-full overflow-auto bg-scroll px-4 py-4 md:px-8 xl:px-[70px]">
+      <div className="main-content h-full! w-full px-4 py-4 md:px-8 xl:px-[70px]">
         <Header setIsMobileSidebar={setIsMobileSidebar} title={name} />
         {children}
       </div>
