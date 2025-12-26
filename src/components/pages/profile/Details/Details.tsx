@@ -28,7 +28,7 @@ export default function ProfileDetails() {
   }, [currentTab]);
 
   return (
-    <div className="flex w-full flex-col gap-y-10 rounded-4xl border border-white/20 bg-linear-to-b from-white/15 to-white/5 p-4 md:p-[34px] lg:rounded-[48px]">
+    <div className="flex w-full flex-col gap-y-6 rounded-4xl border border-white/20 bg-linear-to-b from-white/15 to-white/5 p-4 sm:gap-y-10 md:p-[34px] lg:rounded-[48px]">
       <Tabs tabs={PROFILE_DETAILS_TABS} onTabChange={setCurrentTab} />
       {section}
     </div>

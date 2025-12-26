@@ -18,7 +18,13 @@ const CoSubscribersTable = () => {
     <Fragment>
       <div className="grid w-full grid-cols-1">
         {true ? (
-          <DataTable table={CoSubscribersData(openDialog)} rowsSpace="12px" />
+          <div className="no-scrollbar overflow-x-auto">
+            <DataTable
+              className="min-w-[653px]"
+              table={CoSubscribersData(openDialog)}
+              rowsSpace="12px"
+            />
+          </div>
         ) : (
           <EmptyState
             className="flex-row! [&>div>p]:text-white! [&>img]:size-[72px]!"

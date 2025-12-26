@@ -8,7 +8,7 @@ const PaymentsHistoryTable = () => {
   return (
     <div className="grid w-full grid-cols-1 gap-4">
       <div className="grid w-full grid-cols-2 items-center gap-1">
-        <h1 className="font-inter leading-[150%] font-medium text-white">
+        <h1 className="font-inter text-sm leading-[150%] font-medium text-white sm:text-base">
           Payments history
         </h1>
         <div className="ml-auto">
@@ -16,8 +16,10 @@ const PaymentsHistoryTable = () => {
         </div>
       </div>
       {true ? (
-        <div className="border-primitives-white_20 bg-primitives-white_5 w-full rounded-3xl border p-5">
-          <DataTable table={paymentHistoryData} isTableHeader />
+        <div className="no-scrollbar overflow-x-auto">
+          <div className="border-primitives-white_20 bg-primitives-white_5 w-full min-w-[653px] rounded-3xl border p-4 sm:p-5">
+            <DataTable className="" table={paymentHistoryData} isTableHeader />
+          </div>
         </div>
       ) : (
         <EmptyState

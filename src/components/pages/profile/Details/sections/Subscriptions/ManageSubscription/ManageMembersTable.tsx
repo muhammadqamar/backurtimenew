@@ -6,10 +6,16 @@ import { Edit, Message, Plus, Trash } from "@/components/icons";
 const ManageMembersTable = () => {
   return (
     <div className="grid w-full grid-cols-1 gap-4">
-      <h1 className="font-inter leading-[150%] font-medium text-white">
+      <h1 className="font-inter text-sm leading-[150%] font-medium text-white sm:text-base">
         Manage members
       </h1>
-      <DataTable table={MembersItemData} rowsSpace="12px" />
+      <div className="no-scrollbar overflow-x-auto">
+        <DataTable
+          className="min-w-[653px]"
+          table={MembersItemData}
+          rowsSpace="12px"
+        />
+      </div>
     </div>
   );
 };

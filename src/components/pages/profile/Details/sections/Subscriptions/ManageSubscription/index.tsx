@@ -1,21 +1,24 @@
 "use client";
 import SubscriptionPaymentCard from "@/components/cards/SubscriptionPaymentCard";
 import SubscriptionSettingCard from "@/components/cards/SubscriptionSettingCard";
-import { Danger } from "@/components/icons";
+import { ArrowLeft, Danger } from "@/components/icons";
 import React, { useState } from "react";
 import ManageMembersTable from "./ManageMembersTable";
-import { Groups, Toggle } from "@/components/common";
+import { Button, Groups, Toggle } from "@/components/common";
 import PaymentsHistoryTable from "./PaymentsHistoryTable";
 import CardCardSection from "./CardCardSection";
 import CoSubscribersTable from "./CoSubscribersTable";
+type subscriptionType = {
+  name: string;
+  logo: string;
+  status: string;
+};
 
+// Define the props interface
 interface manageTypes {
   currentType: string;
-  data: {
-    name: string;
-    logo: string;
-    status: string;
-  };
+  setSubscription: React.Dispatch<React.SetStateAction<subscriptionType>>;
+  data: subscriptionType;
 }
 
 const SUBSCRIPTIONS_SECTION_GROUPS = [
@@ -31,16 +34,29 @@ const SUBSCRIPTIONS_SECTION_GROUPS = [
   },
 ];
 
-const ManageSubscription = ({ currentType, data }: manageTypes) => {
+const ManageSubscription = ({
+  currentType,
+  data,
+  setSubscription,
+}: manageTypes) => {
   const [currentGroup, setCurrentGroup] = useState("payments_history");
   const [isPrivate, setIsPrivate] = useState(false);
 
   return (
-    <div className="grid w-full grid-cols-1 gap-10">
-      <p className="font-inter inline-flex items-center gap-1.5 text-base leading-[140%] font-semibold text-white">
-        <Danger size={20} className="[&_path]:stroke-white!" /> Back to
-        subscriptions
-      </p>
+    <div className="grid w-full grid-cols-1 gap-6 sm:gap-10">
+      <Button
+        title="Back to subscriptions"
+        icon={<ArrowLeft size={20} className="[&_path]:stroke-white!" />}
+        onClick={() => {
+          setSubscription({
+            name: "",
+            logo: "",
+            status: "",
+          });
+        }}
+        className="font-inter inline-flex min-h-auto! w-max items-center justify-start gap-1.5! p-0! text-base! leading-[140%]! font-semibold! text-white"
+      />
+
       <div className="grid w-full grid-cols-1 gap-6">
         {currentType === "subscription_owner" ? (
           <SubscriptionSettingCard
@@ -58,7 +74,7 @@ const ManageSubscription = ({ currentType, data }: manageTypes) => {
             logoUrl={data?.logo || "/components/subcription-setting-icon.svg"}
           />
         )}
-        <div className="grid w-full grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-[22px] lg:grid-cols-3">
           <SubscriptionPaymentCard
             isButton={true}
             buttonText="Add your debit date"
@@ -84,6 +100,7 @@ const ManageSubscription = ({ currentType, data }: manageTypes) => {
           />
         </div>
       </div>
+      {/* table members */}
       <ManageMembersTable />
 
       <div className="grid w-full grid-cols-1 gap-6">
@@ -105,14 +122,14 @@ const ManageSubscription = ({ currentType, data }: manageTypes) => {
         />
       ) : (
         <>
-          <div className="bg-primitives-white_5 border-primitives-white_20 flex w-full flex-col gap-3 rounded-3xl border p-5">
+          <div className="bg-primitives-white_5 border-primitives-white_20 flex w-full flex-col gap-3 rounded-3xl border p-4 sm:p-5">
             <Toggle
               label={
                 <div className="flex flex-col gap-y-2">
-                  <span className="font-inter text-base leading-[150%] font-medium text-white">
+                  <span className="font-inter text-sm leading-[150%] font-medium text-white sm:text-base">
                     Service continuity
                   </span>
-                  <span className="text-grey-light font-inter text-base leading-[150%] font-normal">
+                  <span className="text-grey-light font-inter text-sm leading-[150%] font-normal sm:text-base">
                     If your owner stops sharing, you will bw automatically
                     redirected to a new, identical offer.
                   </span>

@@ -1,4 +1,5 @@
 import React, { ReactElement, ReactNode, useEffect } from "react";
+import Button from "../Button";
 
 // Define the types for the props
 interface DialogProps {
@@ -11,11 +12,14 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, closeDialog, children }) => {
   const handleOverlayClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
+    // Check if the target is the overlay and not the modal content
     if (e.target === e.currentTarget) {
       closeDialog();
     }
   };
+
   useEffect(() => {
+    // Disable scroll when modal is open
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -28,6 +32,7 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, closeDialog, children }) => {
   }, [isOpen]);
 
   useEffect(() => {
+    // Close dialog when pressing 'Escape' key
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         closeDialog();
@@ -51,8 +56,21 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, closeDialog, children }) => {
         className={`flex h-full transform items-center justify-center transition-all duration-300 ${
           isOpen ? "scale-100" : "scale-95"
         }`}
+        // Prevent the click event from propagating to the overlay
+        onClick={(e) => {
+          e.stopPropagation();
+          handleOverlayClick(e);
+        }}
       >
-        {children}
+        <div className="relative h-max w-max">
+          <Button
+            onClick={closeDialog}
+            withBackgoundImage
+            backgroundImageUrl="/icons/close-stone-icon.svg"
+            className="absolute -top-4 right-0 min-h-16! w-max min-w-16!"
+          />
+          {children}
+        </div>
       </div>
     </div>
   );

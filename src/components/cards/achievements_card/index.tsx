@@ -1,14 +1,21 @@
+import { cn } from "@/utils";
 import Image from "next/image";
 
 interface AchievementsCardProps {
   icon: string;
   title: string;
+  className?: string;
 }
 
 const AchievementsCard = (data: AchievementsCardProps) => {
-  const { icon, title } = data;
+  const { icon, title, className } = data;
   return (
-    <div className="bg-dark-10 relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-3xl p-1">
+    <div
+      className={cn(
+        "bg-dark-10 relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-3xl p-1",
+        className,
+      )}
+    >
       <Image
         src="/pages/profile/shadow-white.svg"
         fill

@@ -81,7 +81,7 @@ export default function SubscriptionsSection() {
           </div>
           {currentGroup === "subscription_owner" &&
             (SUBSCRIPTION_DATA.length > 0 ? (
-              <div className="grid w-full grid-cols-1 items-center gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="no-scrollbar flex w-full items-center gap-4 overflow-x-auto sm:gap-5">
                 {SUBSCRIPTION_DATA.map((card: subscriptionProps, i: number) => (
                   <SubscriptionOwnerCard
                     key={i}
@@ -94,6 +94,7 @@ export default function SubscriptionsSection() {
                         status: card.status || "",
                       });
                     }}
+                    className="w-[304px] shrink-0 sm:w-[467px]"
                     buttonText={"Manage Subscription"}
                   />
                 ))}
@@ -109,11 +110,12 @@ export default function SubscriptionsSection() {
               />
             ))}
           {currentGroup === "subscriber" && (
-            <div className="grid w-full grid-cols-1 items-center gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="no-scrollbar flex w-full items-center gap-4 overflow-x-auto sm:gap-5">
               {SUBSCRIPTION_DATA.map((card: subscriptionProps, i: number) => (
                 <SubscriptionOwnerCard
                   key={i}
                   {...card}
+                  className="w-[304px] shrink-0 sm:w-[467px]"
                   buttonText={"Access The Subscription"}
                   onClick={() => {
                     setSubscription({
@@ -128,7 +130,11 @@ export default function SubscriptionsSection() {
           )}
         </>
       ) : (
-        <ManageSubscription currentType={currentGroup} data={subscription} />
+        <ManageSubscription
+          currentType={currentGroup}
+          data={subscription}
+          setSubscription={setSubscription}
+        />
       )}
     </div>
   );

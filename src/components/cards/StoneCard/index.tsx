@@ -9,12 +9,21 @@ interface TypesProps {
   title?: string;
   status?: string | number;
   icons?: ReactNode;
+  className?: string;
 }
 
-const StoneCard = ({ image, value, title, status, icons }: TypesProps) => {
+const StoneCard = ({
+  image,
+  value,
+  title,
+  status,
+  icons,
+  className,
+}: TypesProps) => {
   return (
     <div
       className={cn(
+        className,
         "relative flex min-h-[41px] w-full items-center gap-2.5 bg-[url(/pages/profile/profile_statistic_border.webp)] bg-size-[99%_100%] bg-no-repeat sm:min-h-[77px] sm:gap-5",
         "py-3 pr-4 pl-4 sm:py-3 sm:pr-6",
         status && "flex-wrap",
@@ -25,7 +34,7 @@ const StoneCard = ({ image, value, title, status, icons }: TypesProps) => {
         width={48}
         height={48}
         alt={`statistic image `}
-        className="absolute top-0 right-0 z-1 h-full w-[22px] object-cover"
+        className="absolute top-0 right-0 z-1 h-full w-[22px] object-cover max-sm:hidden"
       />
       <Image
         src={image || ""}
