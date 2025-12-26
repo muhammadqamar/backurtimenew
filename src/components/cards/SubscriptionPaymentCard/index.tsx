@@ -7,7 +7,8 @@ type SubscriptionPaymentCardProps = {
   isButton: boolean;
   onClick?: ReactEventHandler;
   name: string;
-  price: number;
+  price: number | string;
+  buttonText?: string;
 };
 
 function SubscriptionPaymentCard({
@@ -15,6 +16,7 @@ function SubscriptionPaymentCard({
   onClick,
   name,
   price,
+  buttonText,
 }: SubscriptionPaymentCardProps) {
   return (
     <div className="bg-primitives-white_10 shadow-dark-sm relative w-full overflow-hidden rounded-3xl px-4 py-4 sm:px-5 sm:py-5">
@@ -26,13 +28,13 @@ function SubscriptionPaymentCard({
       />
       <div className="mb-1 flex w-full flex-wrap items-center justify-between gap-2">
         <h4 className="font-inter text-2xl leading-[135%] font-semibold text-white">
-          € {price.toFixed(2)}
+          {price}
         </h4>
 
         {isButton && (
           <Button
             onClick={onClick}
-            title="Add your debit date"
+            title={buttonText}
             icon={<Plus size={16} className="[&>path]:stroke-white!" />}
             className="font-inter min-h-0 w-fit gap-1.5 p-0 text-xs leading-[120%] font-semibold tracking-[.12px]"
           />

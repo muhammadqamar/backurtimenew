@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { Button } from "@/components/common";
 import { FaqCircle, Reply } from "@/components/icons";
 import Image from "next/image";
@@ -11,13 +9,16 @@ type SubscriptionCardProps = {
   name: string;
   logoUrl: string;
   isOwner?: boolean;
+  checked?: boolean;
+  onToggleChange?: (checked: boolean) => void;
 };
 const SubscriptionSettingCard: React.FC<SubscriptionCardProps> = ({
   name,
   logoUrl,
   isOwner,
+  checked,
+  onToggleChange,
 }) => {
-  const [isPrivate, setIsPrivate] = useState(false);
   return (
     <div className="bg-primitives-white_10 flex w-full flex-row flex-wrap items-center justify-between gap-4 rounded-3xl px-4 py-4 sm:px-5">
       <div className="flex w-full items-center justify-between gap-3 sm:w-auto sm:justify-start">
@@ -29,7 +30,7 @@ const SubscriptionSettingCard: React.FC<SubscriptionCardProps> = ({
             height={64}
             className="drop-shadow-icon-md"
           />
-          <h5 className="font-cinzel text-base leading-[120%]! font-bold tracking-[.2px] uppercase sm:text-xl">
+          <h5 className="font-cinzel text-base leading-[120%]! font-bold tracking-[.2px] text-white uppercase sm:text-xl">
             {name}
           </h5>
         </div>
@@ -53,8 +54,8 @@ const SubscriptionSettingCard: React.FC<SubscriptionCardProps> = ({
           <Toggle
             label="Private"
             leftLabel="Public"
-            checked={isPrivate}
-            onChange={setIsPrivate}
+            checked={checked}
+            onChange={onToggleChange}
             className="gap-x-2.5"
           />
         ) : (

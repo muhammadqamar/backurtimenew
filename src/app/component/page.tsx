@@ -40,14 +40,17 @@ import CurrentPerkCard from "@/components/cards/CurrentPerkCard";
 import CardCart from "@/components/cards/CardCart";
 import HorizontalCard from "@/components/cards/HorizontalCard";
 import SubscriptionCard from "@/components/cards/SubscriptionCard";
-import ServeyCard from "@/components/cards/ServeyCard";
-import BuyMoreCard from "@/components/cards/BuyMoreCard";
-import MysteryCard from "@/components/cards/MysteryCard";
 import PaymentMethodAddDetailsCard from "@/components/cards/PaymentMethodAddDetailsCard";
 import PaymentMethodSelectedCard from "@/components/cards/PaymentMethodSelectedCard";
 import SelectPlanCard from "@/components/cards/SelectPlanCard";
+<<<<<<< HEAD
 import GiftCard from "@/components/cards/GiftCard";
 import AwardCard from "@/components/cards/AwardCard";
+=======
+import ServeyCard from "@/components/cards/ServeyCard";
+import BuyMoreCard from "@/components/cards/BuyMoreCard";
+import MysteryCard from "@/components/cards/MysteryCard";
+>>>>>>> 3ca0477a134d110edfa889f35e8f87791b31eace
 
 export default function Page() {
   const [selectedId, setSelectedId] = useState<string | null>("visa-hdfc");

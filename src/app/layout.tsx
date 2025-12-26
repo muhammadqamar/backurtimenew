@@ -19,7 +19,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full">
       <body
-        className={`${cinzelFont.variable} ${interFont.variable} h-full antialiased`}
+        className={`${cinzelFont.variable} ${interFont.variable} bg-black-normal relative h-full antialiased`}
       >
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>

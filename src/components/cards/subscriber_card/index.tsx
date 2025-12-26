@@ -1,16 +1,39 @@
+import { Button } from "@/components/common";
+import { Plus } from "@/components/icons";
 import { cn } from "@/utils";
 import Image from "next/image";
+import { ReactEventHandler } from "react";
 interface subscriptionProps {
   status: string;
   logo: string;
   name: string;
   member: number;
+  buttonText?: string;
+  inAddButton?: boolean;
+  onClick?: ReactEventHandler;
+  onAdd?: ReactEventHandler;
+  className?: string;
 }
 
 const SubscriptionOwnerCard = (data: subscriptionProps) => {
-  const { status, logo, name, member } = data;
+  const {
+    status,
+    logo,
+    name,
+    member,
+    buttonText,
+    inAddButton = false,
+    onClick,
+    onAdd,
+    className,
+  } = data;
   return (
-    <div className="bg-white-10 relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-[42px] p-1">
+    <div
+      className={cn(
+        "bg-white-10 relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-[42px] p-1",
+        className,
+      )}
+    >
       <div
         className={`absolute bottom-[84px] left-1/2 h-[137px] w-[276px] -translate-x-1/2 rounded-[276px] ${status?.includes("Public") ? "bg-[linear-gradient(97deg,#90D2F6_5.72%,#009FAA_38.32%,#00CDBD_84.96%,#C2E8FD_110.09%)]" : "bg-[linear-gradient(90deg,#C2E8FD_-0.05%,#67E0AC_31.2%,#138B57_75.92%,#C2E8FD_100.02%)]"} opacity-[0.3] blur-[68px]`}
       />
@@ -50,10 +73,10 @@ const SubscriptionOwnerCard = (data: subscriptionProps) => {
       </div>
 
       <div className="relative z-2 flex min-h-10 w-full flex-col gap-4 px-4 pb-4">
-        <p className="font-inter text-[18px] leading-[140%] font-semibold tracking-[1%] text-white">
+        <p className="font-inter text-base leading-[140%] font-semibold tracking-[1%] text-white sm:text-[18px]">
           {name}
         </p>
-        <div className="flex w-full items-center justify-between gap-2.5">
+        <div className="xsm:justify-between flex w-full items-center justify-start gap-2.5">
           <div className="flex items-center">
             {[...Array(member)].map((i) => (
               <div
@@ -69,29 +92,29 @@ const SubscriptionOwnerCard = (data: subscriptionProps) => {
               </div>
             ))}
           </div>
-          <p className="font-inter text-grey-light text-base leading-[150%]! font-medium">
+          <p className="font-inter text-grey-light text-sm leading-[150%]! font-medium sm:text-base">
             1/{member} members
           </p>
         </div>
-        <button className="relative flex min-h-12 w-full items-center justify-center p-[13px]">
-          <span className="font-cinzel text-lg leading-[122%]! font-bold text-white">
-            Access The Subscription
-          </span>
-          <Image
-            src="/components/frame-left-btn.svg"
-            alt="btn"
-            width={20}
-            height={48}
-            className="absolute top-0 right-0 h-full w-5 object-cover object-right"
+        <div className="flex items-center gap-2">
+          <Button
+            className="w-full px-[22px]! max-sm:text-[18px]"
+            onClick={onClick}
+            title={buttonText}
+            variant="secondary"
           />
-          <Image
-            src="/components/frame-btn.svg"
-            alt="btn"
-            width={20}
-            height={48}
-            className="absolute top-0 left-0 h-full min-h-12 w-[calc(100%-20px)] object-cover object-left"
-          />
-        </button>
+          {inAddButton && (
+            <div className="max-sm: max-sm:absolute max-sm:top-0 max-sm:right-6">
+              <Button
+                onClick={onAdd}
+                className={cn(
+                  "bg-primitives-white_10 border-primitives-white_10 flex w-12! min-w-12 shrink-0 items-center justify-center gap-3 rounded-full! border p-0!",
+                )}
+                icon={<Plus className="[&_path]:stroke-white!" />}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

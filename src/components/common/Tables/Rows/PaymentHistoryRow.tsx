@@ -23,7 +23,7 @@ export function PaymentHistoryRow({
           return <TableCell key={column.accessorKey}>-</TableCell>;
         }
         return (
-          <TableCell key={column.accessorKey} className="py-5">
+          <TableCell key={column.accessorKey}>
             <div className={cn("flex items-center gap-3 text-white")}>
               {column.accessorKey === "date" && <Calender />}
               {typeof cell.icon === "string" && (
