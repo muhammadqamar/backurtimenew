@@ -104,13 +104,13 @@ const DeleteCoSubscriberContent = ({
           <Image
             src={
               variant === "public-subscription"
-                ? "/pages/profile/public-badge.svg"
+                ? "/pages/profile/silver-lock-badge.svg"
                 : "/icons/delete-badge.svg"
             }
             alt="delete"
             width={120}
             height={120}
-            className="object-contain max-sm:size-[72px]!"
+            className="drop-shadow-lock-icon object-contain max-sm:size-[72px]!"
           />
           <div className="flex w-full flex-col gap-2">
             <h4 className="font-inter text-center text-[20px] leading-[135%] font-semibold text-white sm:text-2xl">
@@ -127,8 +127,12 @@ const DeleteCoSubscriberContent = ({
               onClick={onClick}
               title={btn1}
               withBackgoundImage
-              backgroundImageUrl="/components/button_bg_168_54.svg"
-              className="font-cinzel min-w-[167px] text-[18px] leading-[122%] font-bold text-white"
+              backgroundImageUrl={
+                variant === "public-subscription"
+                  ? "/components/sec-btn-216.png"
+                  : "/components/button_bg_168_54.svg"
+              }
+              className="font-cinzel min-w-[216px] text-[18px] leading-[122%] font-bold text-white"
             />
             <Button
               onClick={onDelete}

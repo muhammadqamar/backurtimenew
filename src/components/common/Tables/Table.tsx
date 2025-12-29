@@ -28,9 +28,9 @@ export function DataTable({
     <Table className={cn(className)}>
       <TableHeader className={!isTableHeader ? "hidden" : ""}>
         <TableRow>
-          {table.columns.map((column, index) => (
+          {table.columns.map((column) => (
             <Head
-              key={index}
+              key={column.header}
               name={column.header}
               className={cn(
                 column.align === "center" && "text-center",
@@ -62,7 +62,7 @@ export function DataTable({
                 }}
               >
                 {table.columns.map((column, colIndex) => (
-                  <TableCell key={`empty-${colIndex}`}></TableCell>
+                  <TableCell key={`empty-${row.id}-${colIndex}`}></TableCell>
                 ))}
               </TableRow>
             )}

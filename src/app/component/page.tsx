@@ -43,14 +43,12 @@ import SubscriptionCard from "@/components/cards/SubscriptionCard";
 import PaymentMethodAddDetailsCard from "@/components/cards/PaymentMethodAddDetailsCard";
 import PaymentMethodSelectedCard from "@/components/cards/PaymentMethodSelectedCard";
 import SelectPlanCard from "@/components/cards/SelectPlanCard";
-<<<<<<< HEAD
 import GiftCard from "@/components/cards/GiftCard";
 import AwardCard from "@/components/cards/AwardCard";
-=======
 import ServeyCard from "@/components/cards/ServeyCard";
 import BuyMoreCard from "@/components/cards/BuyMoreCard";
 import MysteryCard from "@/components/cards/MysteryCard";
->>>>>>> 3ca0477a134d110edfa889f35e8f87791b31eace
+import Image from "next/image";
 
 export default function Page() {
   const [selectedId, setSelectedId] = useState<string | null>("visa-hdfc");
@@ -1161,6 +1159,14 @@ export default function Page() {
           iconSrc="/icons/apple-icon.svg"
           name="Google gift card"
           variant="blue"
+        />
+      </div>
+      <div className="relative h-[300px] w-[20%]">
+        <Image
+          src="/components/freeze-card.png"
+          alt="freeze"
+          fill
+          className="object-fill"
         />
       </div>
       <span className="font-bold">Award Card</span>
