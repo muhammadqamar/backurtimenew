@@ -49,6 +49,7 @@ import ServeyCard from "@/components/cards/ServeyCard";
 import BuyMoreCard from "@/components/cards/BuyMoreCard";
 import MysteryCard from "@/components/cards/MysteryCard";
 import Image from "next/image";
+import FlagCard from "@/components/cards/FlagCard";
 
 export default function Page() {
   const [selectedId, setSelectedId] = useState<string | null>("visa-hdfc");
@@ -1187,6 +1188,21 @@ export default function Page() {
           lockPrizeName="$500 amazon Card"
           referralsText="50"
           lockPrizeTicket={1}
+        />
+      </div>
+      <span className="font-bold">Flag Card</span>
+      <div className="grid grid-cols-1 gap-10">
+        <FlagCard
+          title="AMANIS"
+          progressText={90}
+          labelSrc="/components/clan-label-red.svg"
+          variant="red"
+        />
+        <FlagCard
+          title="AMANIS"
+          progressText={90}
+          labelSrc="/components/clan-label-brown.svg"
+          variant="brown"
         />
       </div>
     </div>
